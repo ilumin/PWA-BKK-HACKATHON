@@ -1,7 +1,7 @@
 <template>
     <div>
-        <button type="button" v-bind:class="color" class="mybutton" @click="routeTo(route)" > {{ label }} </button>
-    </div>  
+        <b-button type="button" v-bind:class="color" class="mybutton" @click="routeTo(route)" > {{ label }} </b-button>
+    </div>
 </template>
 
 <script>
@@ -29,5 +29,3 @@ export default {
     background-color: green;
 }
 </style>
-
-
