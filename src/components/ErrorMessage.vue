@@ -1,20 +1,17 @@
 <template>
-    <div>
-        <p class="error-message">
-            {{ message }}
-        </p>
-    </div>
+  <b-alert dismissible :show="show == 'true'" variant="danger" class="error-message">
+    <slot></slot>
+  </b-alert>
 </template>
 
 <script>
 export default {
-  props: ['message']
+  props: ['show']
 }
 </script>
 
 <style>
 .error-message {
-    color: red;
+  color: red;
 }
 </style>
-
