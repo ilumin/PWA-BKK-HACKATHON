@@ -10,11 +10,13 @@ play('TripList')
     data () {
       return {
         tripsVar: [{
+          id: '1',
           img: 'http://cdn.www.ministry-to-children.com/wp-content/uploads/2015/07/family-road-trip.jpg',
           name: 'fffff',
           rating: 'fffff'
         },
         {
+          id: '2',
           img: 'http://cdn.www.ministry-to-children.com/wp-content/uploads/2015/07/family-road-trip.jpg',
           name: 'ggggg',
           rating: 'fgggggffff'
