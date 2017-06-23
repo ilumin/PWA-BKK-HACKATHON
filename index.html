@@ -27,6 +27,21 @@
   </head>
   <body>
     <div id="app">This is your fallback content in case JavaScript fails to load.</div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDN_L6jiF--OoOojgGpar4u2mrHuLDMAH0",
+        authDomain: "pwa-bkk-hackathon.firebaseapp.com",
+        databaseURL: "https://pwa-bkk-hackathon.firebaseio.com",
+        projectId: "pwa-bkk-hackathon",
+        storageBucket: "pwa-bkk-hackathon.appspot.com",
+        messagingSenderId: "918094475805"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
