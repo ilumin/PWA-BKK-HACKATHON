@@ -9,8 +9,10 @@ export default {
   name: 'myButton',
   props: [ 'label', 'color', 'route' ],
   methods: {
-      routeTo: function() {
-          
+      routeTo: function(route) {
+        if(route != undefined) {
+            this.$router.push(route)
+        }
       }
   }
 }
