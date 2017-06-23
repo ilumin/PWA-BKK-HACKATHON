@@ -8,3 +8,6 @@ play('ErrorMessage')
   .add('with text', {
     template: `<error-message message="error tee mee ngoo"></error-message>`
   })
+  .add('without text', {
+    template: `<error-message></error-message>`
+  })
