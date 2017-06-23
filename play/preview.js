@@ -1,12 +1,11 @@
 /* eslint-disable import/no-unassigned-import */
 
-// ./play/preview.js
 import './' // which is ./play/index.js
 import './trip'
 import './tripList'
 import preview from 'vue-play/preview'
+import './my-button.play'
+import './error-message.play'
+import './location.play'
 
-// actually render the scenarios in preview page
-// when the preview page is ready
-// it will tell the app interface what scenarios we have
 preview()

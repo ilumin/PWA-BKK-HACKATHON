@@ -1,10 +1,15 @@
-import Vue from 'vue'
 import { play } from 'vue-play'
-import MyButton from './../src/components/MyButton.vue'
 
-Vue.component('my-button', MyButton)
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 
-play('CustomButton')
-  .add('with text', {
-    template: `<my-button @click="$log('123')" label="hello">Hello</my-button>`
-  })
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue)
+
+const load = requireContext => {
+  return requireContext.keys().map(requireContext)
+}
+
+load(require.context('./', true, /.play.js$/))
