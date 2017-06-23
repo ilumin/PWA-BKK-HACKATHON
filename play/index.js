@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import { play } from 'vue-play'
 
 const load = requireContext => {
