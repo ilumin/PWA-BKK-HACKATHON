@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "6.5.0"
+
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g firebase-tools
+
+script:
+  - npm run build
+
+after_success:
+  - firebase deploy --token=1/WbhGh1e1nL5urkwee_dl36gJ3IEyNgteRFKy1NgIcH0
