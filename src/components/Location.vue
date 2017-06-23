@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div id="location-photo">
-            <img :src="getImageUrl(photo_reference, maxwidth, maxheight)"></img>
+        <div id="location-photo" class="location-photo">
+            <img :src="getImage(photo_reference, maxwidth, maxheight)"></img>
         </div>
-        <div id="location-name">
+        <div id="location-name" class="location-name">
             <p>{{ location_name }}</p>
         </div>
     </div>
@@ -24,9 +24,7 @@ export default {
         }
     },
     methods: {
-        getImageUrl: function(photo_reference, maxwidth, maxheight) {
-            console.log('width=' + maxwidth)
-            console.log('height=' + maxheight)
+        getImage: function(photo_reference, maxwidth, maxheight) {
             return  getPlaceImage(photo_reference, maxwidth, maxheight);
         }
     }
@@ -34,5 +32,10 @@ export default {
 </script>
 
 <style>
-
+.location-photo {
+    float: left;
+}
+.location-name {
+    float: right;
+}
 </style>
