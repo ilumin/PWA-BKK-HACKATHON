@@ -3,6 +3,7 @@
 // ./play/preview.js
 import './' // which is ./play/index.js
 import './trip'
+import './tripList'
 import preview from 'vue-play/preview'
 
 // actually render the scenarios in preview page
