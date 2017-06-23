@@ -2,6 +2,6 @@
 
 import './' // which is ./play/index.js
 import preview from 'vue-play/preview'
-import './my-button'
+import './my-button.play'
 
 preview()

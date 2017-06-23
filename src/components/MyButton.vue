@@ -1,13 +1,20 @@
 <template>
     <div>
-        <button type="button" v-bind:class="color" class="mybutton"> {{ label }} </button>
+        <button type="button" v-bind:class="color" class="mybutton" @click="routeTo(route)" > {{ label }} </button>
     </div>  
 </template>
 
 <script>
 export default {
   name: 'myButton',
-  props: [ 'label', 'color' ]
+  props: [ 'label', 'color', 'route' ],
+  methods: {
+      routeTo: function(route) {
+        if(route != undefined) {
+            this.$router.push(route)
+        }
+      }
+  }
 }
 </script>
 
