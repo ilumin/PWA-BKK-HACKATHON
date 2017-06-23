@@ -12,8 +12,8 @@ play('Trip')
         tripVar: {
           id: '1',
           img: 'http://cdn.www.ministry-to-children.com/wp-content/uploads/2015/07/family-road-trip.jpg',
-          name: 'fffff',
-          rating: 'fffff'
+          name: 'trip1',
+          date: '03 aug 2017'
         }
       }
     }
