@@ -8,3 +8,11 @@ test/unit/coverage
 test/e2e/reports
 selenium-debug.log
 yarn.lock
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+.vscode/
