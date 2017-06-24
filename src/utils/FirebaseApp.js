@@ -25,9 +25,6 @@ export const authService = {
   user: null,
 
   isLoggedIn () {
-    console.log(initializeAuth.resolve(user => {
-      console.log('resolve.user:', user)
-    }))
     return initializeAuth.then(user => {
       console.log('initializeAuth:', user)
       return user && !user.isAnonymous
