@@ -1,10 +1,13 @@
 import axios from 'axios'
 
-export function getPlaceImage(photo_reference, max_width, max_height) {
-    // TODO: call google place image API
-    return 'https://maps.googleapis.com/maps/api/place/photo?maxheight='+ max_height +'&maxwidth='+ max_width +'&photoreference='+ photo_reference +'&key=AIzaSyDGvRoeZwvvbOmrQShZaAaQSjrtbwTLCWA';
+export function getPlaceImage (photoReference, maxWidth, maxHeight) {
+  return 'https://maps.googleapis.com/maps/api/place/photo?maxheight=' + maxHeight + '&maxwidth=' + maxWidth + '&photoreference=' + photoReference + '&key=AIzaSyDGvRoeZwvvbOmrQShZaAaQSjrtbwTLCWA'
 }
 
-export function autoComplete(value) {
+export function autoComplete (value) {
   return axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${value}&types=geocode&key=AIzaSyAMJ1pWSfYUWu7_Jj7lUy6QY3pwdBONXwk`)
+}
+
+export function getPlaceDetail (placeId) {
+  return axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyAMJ1pWSfYUWu7_Jj7lUy6QY3pwdBONXwk`)
 }
