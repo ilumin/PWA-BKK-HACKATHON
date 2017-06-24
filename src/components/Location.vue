@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button @click="routeImage()">TEST</button>
     <div id="location-photo" class="location-photo" @click="routeImage()">
       <img :src="getImage(location.photoReference, location.maxWidth, location.maxHeight)"></img>
     </div>
@@ -48,7 +49,7 @@ export default {
     routeImage: function () {
       console.log('routeImage')
       var vm = this
-      vm.$route.push('/location-detail')
+      vm.$router.push('/location-detail')
     },
     getImage: function (photoReference, maxWidth, maxHeight) {
       return getPlaceImage(photoReference, maxWidth, maxHeight)
