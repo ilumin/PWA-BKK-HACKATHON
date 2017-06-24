@@ -19,11 +19,6 @@
         <icon name="close" width=20 height=20></icon>
       </div>
     </div>
-    <div>
-       <!-- 
-       <location-detail></location-detail>
-        -->
-    </div>
   </div>
 </template>
 

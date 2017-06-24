@@ -13,13 +13,17 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import Firebase from 'firebase'
+import { getUser, authService } from '@/utils/FirebaseApp'
 
 export default {
-  name: 'hello',
+  name: 'Profile',
   methods: {
     logOut () {
-      firebase.auth().signOut()
+      authService.logOut()
+      Firebase.auth().signOut().then(() => {
+        this.$router.push('/')
+      })
     }
   },
   data () {
@@ -33,7 +37,10 @@ export default {
   },
   mounted () {
     let vm = this
-    firebase.auth().onAuthStateChanged((user) => {
+    console.log('getUser:', getUser())
+    console.log('getUser:', authService.isLoggedIn())
+    Firebase.auth().onAuthStateChanged((user) => {
+      console.log('mounted')
       if (user) {
         vm.name = user.displayName
         vm.email = user.email

@@ -8,7 +8,7 @@
         <AutoComplete @value="getDestination"></AutoComplete>
 
         <button @click.prevent="getFormValues()">SUBMIT</button>
-      </form>  
+      </form>
     </div>
     <div>
       <my-button label="My Trips" route="/my-trip"></my-button>
