@@ -3,7 +3,7 @@
     Location Search page
     <input v-model="q"></input>
     <button @click="searchPlace()">Search</button>
-    <location-list :locations="locations"></location-list>
+    <location-list :locations="locations" @addId="addId"></location-list>
   </div>
 </template>
 
@@ -32,17 +32,20 @@ export default {
         }
         response.data.results.splice(0, 5).forEach(function (place) {
           var location = {
-            id: 'place.place_id',
+            id: place.place_id,
             location_name: String(place.name),
             rating: place.rating,
             type: 'add',
-            photo_reference: 'place.photos[0].photo_reference',
+            photo_reference: place.photos[0].photo_reference,
             max_width: 100,
             max_height: 100
           }
           vm.locations.push(location)
         }, this)
       })
+    },
+    addId: function (id) {
+      console.log('id = ' + id)
     }
   }
 }

@@ -2,10 +2,13 @@
   <div>
     <div>
       <form>
-        <input type="text" value="Start">
-        <input type="text" value="Destination">
+        <AutoComplete @value="getStartAt"></AutoComplete>
+        <br>
+        <br>
+        <AutoComplete @value="getDestination"></AutoComplete>
+
         <button @click.prevent="getFormValues()">SUBMIT</button>
-      </form>  
+      </form>
     </div>
     <div>
       <my-button label="My Trips" route="/my-trip"></my-button>
@@ -15,11 +18,50 @@
 
 <script>
 import MyButton from '@/components/MyButton.vue'
+import AutoComplete from '@/utils/LocationAutoComplete.vue'
+import {searchPlace} from '@/utils/ApiUtil'
 
 export default {
   name: 'home',
   components: {
-    MyButton
+    MyButton,
+    AutoComplete
+  },
+  data () {
+    return {
+      startAt: '',
+      destination: '',
+      dataSubmit: {}
+    }
+  },
+  methods: {
+    getFormValues: function () {
+      var vm = this
+      console.log(vm.startAt + ' - ' + vm.destination)
+      if (vm.startAt.length === 0 || vm.destination.length === 0) {
+        alert('Please Input StartAt and Destination')
+        return
+      }
+
+      searchPlace(vm.startAt).then(function (response) {
+        if (response.data.results) {
+//
+//
+//
+//          vm.$firebaseRefs.trips.push(
+//            data
+//          ).then(() => {
+//
+//          })
+        }
+      })
+    },
+    getStartAt: function (val) {
+      this.startAt = val
+    },
+    getDestination: function (val) {
+      this.destination = val
+    }
   }
 }
 </script>

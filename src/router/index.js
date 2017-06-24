@@ -9,6 +9,8 @@ import ManageTrip from '@/views/ManageTrip'
 import LocationSearch from '@/views/LocationSearch'
 import LocationDetail from '@/views/LocationDetail'
 
+import { authService } from '@/utils/FirebaseApp'
+
 Vue.use(Router)
 
 export default new Router({
@@ -16,7 +18,8 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      beforeEnter: loginRequired
     },
     {
       path: '/login',
@@ -26,32 +29,53 @@ export default new Router({
     {
       path: '/my-trip',
       name: 'MyTrips',
-      component: MyTrips
+      component: MyTrips,
+      beforeEnter: loginRequired
     },
     {
       path: '/trip-detail',
       name: 'TripDetail',
-      component: TripDetail
+      component: TripDetail,
+      beforeEnter: loginRequired
     },
     {
       path: '/manage-trip',
       name: 'ManageTrip',
-      component: ManageTrip
+      component: ManageTrip,
+      beforeEnter: loginRequired
     },
     {
       path: '/location-search',
       name: 'LocationSearch',
-      component: LocationSearch
+      component: LocationSearch,
+      beforeEnter: loginRequired
     },
     {
       path: '/location-detail',
       name: 'LocationDetail',
-      component: LocationDetail
+      component: LocationDetail,
+      beforeEnter: loginRequired
     },
     {
       path: '/profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
+      beforeEnter: loginRequired
     }
   ]
 })
+
+function loginRequired (to, from, next) {
+  authService.isLoggedIn().then(isLoggedIn => {
+    // next(isLoggedIn ? '' : '/login')
+    console.log('isLoggedIn:', isLoggedIn)
+    console.log('authService.user:', authService.user)
+    if (isLoggedIn) {
+      console.log('just go next')
+      next()
+    } else {
+      console.log('no permission login first')
+      next('/login')
+    }
+  })
+}

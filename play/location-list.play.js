@@ -34,8 +34,7 @@ play('LocationList')
           location_name: 'location name 3',
           rating: 3.5,
           type: 'delete'
-        }
-        ]
+        }]
       }
     }
   })
