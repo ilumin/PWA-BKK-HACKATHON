@@ -33,7 +33,7 @@ export default {
   methods: {
     getFormValues: function () {
       console.log(this.startAt + ' - ' + this.destination)
-      if(this.startAt.length === 0 || this.destination.length === 0){
+      if (this.startAt.length === 0 || this.destination.length === 0) {
         alert('errrorrrrrrr')
       }
     },
