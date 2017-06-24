@@ -1,34 +1,27 @@
 <template>
   <div>
-    <div>
-        <!--<my-button color="blue" @click="facebookLogin()" label="login with facebook"></my-button>-->
-        <button @click="facebookLogin()">Log in</button>
-    </div>
+    <div id="firebaseui-auth-container"></div>
   </div>
 </template>
 
 <script>
-import MyButton from '@/components/MyButton.vue'
+import firebase from 'firebase'
+import firebaseui from 'firebaseui'
+// import { config } from '@/firebase.config'
 
 export default {
   name: 'login',
   components: {
-    MyButton
   },
-  methods: {
-    facebookLogin: function () {
-      const provider = new window.firebase.auth.FacebookAuthProvider()
-      console.log(JSON.stringify(provider))
-      window.firebase.auth().signInWithPopup(provider).then(function (result) {
-        let token = result.credential.accessToken
-        // The signed-in user info.
-        let user = result.user
-        console.log(token, JSON.stringify(token))
-        console.log(user, JSON.stringify(user))
-      }).catch(function (error) {
-        console.log(error, JSON.stringify(error))
-      })
+  mounted () {
+    const uiConfig = {
+      signInSuccessUrl: '/',
+      signInOptions: [
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID
+      ]
     }
+    const ui = new firebaseui.auth.AuthUI(firebase.auth())
+    ui.start('#firebaseui-auth-container', uiConfig)
   }
 }
 </script>
