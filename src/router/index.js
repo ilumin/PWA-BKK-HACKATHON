@@ -66,9 +66,7 @@ export default new Router({
 })
 
 function loginRequired (to, from, next) {
-  if (authService.isLoggedIn()) {
-    next()
-  } else {
-    next('/login')
-  }
+  authService.isLoggedIn().then(user => {
+    next(user ? '/login' : '')
+  })
 }
