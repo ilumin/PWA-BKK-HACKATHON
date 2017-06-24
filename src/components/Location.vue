@@ -11,16 +11,26 @@
                 <star-rating :rating=location.rating :read-only=true :star-size="15" :increment="0.5"></star-rating>
             </div>
         </div>
+        <div id="action">
+            <div id="add" class="add" @click=addLocation(location.id)>
+                <icon name="add" width=20 height=20></icon>
+            </div>
+            <div id="close" class="close" @click=deleteLocation(location.id)>
+                <icon name="close" width=20 height=20></icon>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import { getPlaceImage } from '../utils/ApiUtil';
 import StarRating from 'vue-star-rating';
+import Icon from 'vue-icon';
 
 export default {
     components: {
-        StarRating
+        StarRating,
+        Icon
     },
     props: ['location'],
     data() {
@@ -30,6 +40,12 @@ export default {
     methods: {
         getImage: function(photo_reference, max_width, max_height) {
             return  getPlaceImage(photo_reference, max_width, max_height);
+        },
+        addLocation: function(id) {
+            this.$emit('locationId', this.id);
+        },
+        deleteLocation: function(id) {
+            this.$emit('locationId', this.id);
         }
     }
 }
