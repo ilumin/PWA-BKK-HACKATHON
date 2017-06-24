@@ -9,49 +9,67 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyCbWJ-1eUpVhivVuixtkkWdMFvSX4tfKvA',
-    libraries: 'places'
+    key: 'AIzaSyCbWJ-1eUpVhivVuixtkkWdMFvSX4tfKvA'
   }
 })
 
 export default {
   name: 'Map',
   props: ['markers', 'direction'],
+  methods: {
+    renderMap () {
+      console.log('init map')
+    }
+  },
+  data () {
+    return {
+      mapObject: null
+    }
+  },
   mounted () {
     const element = this.$refs['gmap']
 
-    function initMap() {
-      var chicago = {lat: 41.85, lng: -87.65};
-      var indianapolis = {lat: 39.79, lng: -86.14};
+    var chicago = {lat: 41.85, lng: -87.65};
+    var indianapolis = {lat: 39.79, lng: -86.14};
 
-      var map = new google.maps.Map(element, {
-        center: chicago,
-        scrollwheel: false,
-        zoom: 7
-      });
+    this.mapObject = new google.maps.Map(element, {
+      center: {lat: 1.85, lng: 13.65},
+      scrollwheel: false,
+      zoom: 7
+    });
 
-      var directionsDisplay = new google.maps.DirectionsRenderer({
-        map: map
-      });
+    // Pass the directions request to the directions service.
+    if (this.direction) {
+      let waypoints = []
+      for (let point of this.direction) {
+        console.log('point:', point)
+        waypoints.push({
+          location: new google.maps.LatLng(point.position),
+          stopover: true
+        })
+      }
 
-      // Set destination, origin and travel mode.
-      var request = {
-        destination: indianapolis,
-        origin: chicago,
+      let request = {
+        origin: waypoints.shift().location,
+        destination: waypoints.pop().location,
+        waypoints: waypoints,
+        optimizeWaypoints: true,
         travelMode: 'DRIVING'
-      };
+      }
 
-      // Pass the directions request to the directions service.
-      var directionsService = new google.maps.DirectionsService();
+      let directionsService = new google.maps.DirectionsService()
+      let directionsDisplay = new google.maps.DirectionsRenderer()
+      directionsDisplay.setMap(this.mapObject)
+
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
           // Display the route on the map.
           directionsDisplay.setDirections(response);
+        } else {
+          console.error('Directions request failed due to ', status)
         }
       });
     }
-
-    initMap()
   }
 }
 </script>
