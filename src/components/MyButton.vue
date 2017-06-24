@@ -9,8 +9,8 @@ export default {
   name: 'myButton',
   props: [ 'label', 'color', 'route' ],
   methods: {
-    routeTo: function(route) {
-      if(route != undefined) {
+    routeTo: function (route) {
+      if (route !== undefined) {
         this.$router.push(route)
       }
     }
@@ -20,12 +20,12 @@ export default {
 
 <style>
 .mybutton {
-    width: 100px;
+  width: 100px;
 }
 .blue {
-    background-color: blue;
+  background-color: blue;
 }
 .green {
-    background-color: green;
+  background-color: green;
 }
 </style>
