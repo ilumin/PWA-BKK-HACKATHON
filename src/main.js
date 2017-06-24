@@ -5,8 +5,12 @@ import App from './App'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 
+import firebase from 'firebase'
+import { config } from './firebase.config'
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'firebaseui/dist/firebaseui.css'
 
 Vue.use(BootstrapVue)
 
@@ -17,5 +21,12 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
+  created () {
+    console.log('created')
+    firebase.initializeApp(config)
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$router.push(user ? '/main' : '/')
+    })
+  },
   components: { App }
 })
