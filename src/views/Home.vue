@@ -6,7 +6,7 @@
         <br>
         <AutoComplete @value="getDestination"></AutoComplete>
         <br>
-        <b-button @click.prevent="getFormValues()">SUBMIT</b-button>
+        <b-button class="my-button" @click.prevent="getFormValues()">Submit</b-button>
       </form>
     </div>
     <hr>
@@ -107,7 +107,21 @@ export default {
   margin: auto;
   text-align: center;
 }
-.v-autocomplete {
+/*.v-autocomplete {
   float: none !important;
+}
+.v-autocomplete-input {
+  width: 60% !important;
+}*/
+.my-button {
+  width: 100px;
+  background-color: #138d75;
+  color: white;
+  font-weight: bold;
+}
+.my-button:hover {
+  background-color: #1abc9c;
+  color: white;
+  font-weight: bold;
 }
 </style>

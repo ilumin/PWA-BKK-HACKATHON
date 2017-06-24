@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div id="location-photo" class="location-photo" @click="routeImage()">
-      <img :src="getImage(location.photoReference, location.maxWidth, location.maxHeight)"></img>
-    </div>
+  <div class="location">
     <div class="location-info">
+      <div id="location-photo" class="location-photo" @click="routeImage(location.id)">
+        <img :src="getImage(location.photoReference, location.maxWidth, location.maxHeight)"></img>
+      </div>
       <div class="location-name">
         <p>{{ location.locationName }}</p>
       </div>
@@ -19,6 +19,7 @@
         <icon name="close" width=20 height=20></icon>
       </div>
     </div>
+    <hr>
   </div>
 </template>
 
@@ -35,15 +36,16 @@ export default {
   props: ['location'],
   data () {
     return {
-      isAdd: true,
-      isDelete: true
+      isAdd: false,
+      isDelete: false
     }
   },
   methods: {
-    routeImage: function () {
+    routeImage: function (place_id) {
       console.log('routeImage')
       var vm = this
-      vm.$route.push('/location-detail')
+      console.log('place_id = ' + place_id)
+      vm.$router.push('/location-detail/' + place_id)
     },
     getImage: function (photoReference, maxWidth, maxHeight) {
       return getPlaceImage(photoReference, maxWidth, maxHeight)
@@ -65,8 +67,9 @@ export default {
   position: relative;
 }
 .location-info {
-  padding: 5px;
+  margin: 5px;
   position: relative;
+  height: 100px;
 }
 .add {
   float: left;
@@ -84,4 +87,8 @@ export default {
 }
 .location-name {}
 .star-rating {}
+
+.location:hover {
+  background-color: #f4f6f6;
+}
 </style>

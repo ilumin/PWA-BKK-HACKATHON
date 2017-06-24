@@ -21,6 +21,14 @@ export default {
 <style>
 .mybutton {
   width: 100px;
+  background-color: #138d75;
+  color: white;
+  font-weight: bold;
+}
+.mybutton:hover {
+  background-color: #1abc9c;
+  color: white;
+  font-weight: bold;
 }
 .blue {
   background-color: blue;

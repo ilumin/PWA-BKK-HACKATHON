@@ -7,7 +7,7 @@
     <template v-if="loaded">
       <LocationList :locations="locations"></LocationList>
     </template>
-    <MyButton label="Edit Trip" :route="'/trips/' + trip_id + '/edit'"></MyButton>
+    <!--<MyButton label="Edit Trip" :route="'/trips/' + trip_id + '/edit'"></MyButton>-->
   </div>
 </template>
 
@@ -43,8 +43,9 @@ export default {
           this.locations = Object.keys(this.trip.locations)
             .map(key => {
               const item = this.trip.locations[key]
+              const place_id = key
               return {
-                id: item.id,
+                id: place_id,
                 locationName: String(item.name),
                 rating: item.rating,
                 type: 'simple',
