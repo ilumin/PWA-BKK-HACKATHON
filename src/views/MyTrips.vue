@@ -13,11 +13,6 @@
     components: {
       TripList
     },
-    methods: {
-      fetchTrips: function () {
-        console.log('fetchTrips')
-      }
-    },
     firebase: {
       trips: {
         source: db.ref('trips/' + getUser().uid)
