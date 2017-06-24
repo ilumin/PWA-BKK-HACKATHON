@@ -20,10 +20,7 @@
     },
     firebase: {
       trips: {
-        source: db.ref('trips/' + getUser().uid),
-        cancelCallback (error) {
-          console.error(error)
-        }
+        source: db.ref('trips/' + getUser().uid)
       }
     },
     data: () => ({
