@@ -2,8 +2,9 @@
   <div>
     <div>
       <form>
-        <input type="text" value="Start">
-        <input type="text" value="Destination">
+        <AutoComplete @value="getStartAt"></AutoComplete>
+        <AutoComplete @value="getDestination"></AutoComplete>
+
         <button @click.prevent="getFormValues()">SUBMIT</button>
       </form>  
     </div>
@@ -15,11 +16,33 @@
 
 <script>
 import MyButton from '@/components/MyButton.vue'
+import AutoComplete from '@/utils/LocationAutoComplete.vue'
 
 export default {
   name: 'home',
   components: {
-    MyButton
+    MyButton,
+    AutoComplete
+  },
+  data () {
+    return {
+      startAt: '',
+      destination: ''
+    }
+  },
+  methods: {
+    getFormValues: function () {
+      console.log(this.startAt + ' - ' + this.destination)
+      if(this.startAt.length === 0 || this.destination.length === 0){
+        alert('errrorrrrrrr')
+      }
+    },
+    getStartAt: function (val) {
+      this.startAt = val
+    },
+    getDestination: function (val) {
+      this.destination = val
+    }
   }
 }
 </script>
