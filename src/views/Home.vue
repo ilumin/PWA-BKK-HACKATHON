@@ -73,7 +73,7 @@ export default {
             if (response.data.results.length > 0) {
               locations = vm.prepareLocation(locations, response.data.results[0], 9999)
               let tripId = vm.addTrip(locations)
-              vm.$router.push('/trip-detail/' + tripId)
+              vm.$router.push('/trips/' + tripId)
             } else {
               alert('Sorry, we cannot find your destination location.')
               return
