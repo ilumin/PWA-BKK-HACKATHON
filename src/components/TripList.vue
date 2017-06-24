@@ -1,17 +1,17 @@
 <template>
-    <div class="trip-list">
-        <trip v-for="trip in trips" :trip="trip" :key="trip.id"></trip>
-    </div>
+  <div class="trip-list">
+    <Trip v-for="trip in trips" :trip="trip" :key="trip.id"></Trip>
+  </div>
 </template>
 
 <script>
-  import Trip from '@/components/Trip'
+  import Trip from '@/components/Trip.vue'
 
   export default {
-    component: {
+    name: 'TripList',
+    props: ['trips'],
+    components: {
       Trip
-    },
-    name: 'tripList',
-    props: ['trips']
+    }
   }
 </script>
