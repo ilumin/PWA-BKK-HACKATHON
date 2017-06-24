@@ -10,8 +10,8 @@
 <script>
 import LocationList from '@/components/LocationList.vue'
 import { searchPlace, getPlaceDetail } from '../utils/ApiUtil'
-// import { getUser, db } from '@/utils/FirebaseApp'
-import { db } from '@/utils/FirebaseApp'
+import { getUser, db } from '@/utils/FirebaseApp'
+
 export default {
   name: 'locationSearch',
   components: {
@@ -21,6 +21,13 @@ export default {
     return {
       q: '',
       locations: []
+    }
+  },
+  firebase () {
+    return {
+      trip: {
+        source: db.ref('trips/KnPoQLob13rmyEg7m_a')
+      }
     }
   },
   methods: {
@@ -47,22 +54,38 @@ export default {
       })
     },
     addId: function (locationId) {
-      console.log('id = ' + locationId)
-      this.addLocationToTrip('-KnP_N7P-q_gR8IECIcq', locationId)
+      this.addLocationToTrip('-KnPoQLob13rmyEg7m_a', locationId)
       // this.addLocationToTrip(tripId, locationId)
     },
     addLocationToTrip: function (tripId, locationId) {
       // TODO get user uid
       // TODO get location by ID
-      getPlaceDetail(locationId).then(function (location) {
+      var _tripId = tripId
+      let vm = this
+      getPlaceDetail(locationId).then(location => {
         // TODO add this locationId to trip [FIREBASE]
-        // const uid = getUser().uid
-        var trip = db.ref('trips/T2ixGYRVFIWCoKRmsZdF5wq2h6g1' + '/' + tripId + '/locations').set({
-          name: '12345'
-        }).then(function () {
-          console.log('success')
-        })
-        console.log('trip = ' + trip)
+        var result = location
+        const uid = getUser().uid
+
+        console.log('location:', location)
+
+        // var tripObj = db.ref('/trips/' + uid + '/' + _tripId + '/locations/')
+        var tripObj = vm.trip
+        console.log('tripObj = ' + tripObj)
+
+        var tripArr = Object.keys(tripArr).map(key => tripObj[key])
+        console.log('tripArr = ' + tripArr)
+        var ref = db.ref('/trips/' + uid + '/' + _tripId + '/locations/' + locationId).set({
+          name: result.name,
+          order: 0,
+          rating: result.rating,
+          thumbnail: result.photos[0].photo_reference,
+          lat: result.geometry.location.lat,
+          lng: result.geometry.location.lng
+        }, this).then(function () {
+          console.log('donee')
+        }, this)
+        console.log(ref)
       })
     }
   }

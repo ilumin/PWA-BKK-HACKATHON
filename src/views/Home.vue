@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div class="main-layout">
     <div>
       <form>
         <AutoComplete @value="getStartAt"></AutoComplete>
         <br>
         <br>
         <AutoComplete @value="getDestination"></AutoComplete>
-
-        <button @click.prevent="getFormValues()">SUBMIT</button>
+        <br>
+        <br>
+        <b-button @click.prevent="getFormValues()">SUBMIT</b-button>
       </form>
     </div>
+    <hr>
     <div>
       <my-button label="My Trips" route="/my-trip"></my-button>
     </div>
@@ -101,5 +103,8 @@ export default {
 </script>
 
 <style>
-
+.main-layout {
+  width: 50%;
+  margin: auto;
+}
 </style>
