@@ -15,5 +15,5 @@ export function getPlaceDetail (placeId) {
 }
 
 export function searchPlace (q) {
-  return axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${q}&key=AIzaSyByIme09U1XhbfSj3_6jDMwKWIgHORzzFU`)
+  return axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${q}&key=AIzaSyDGvRoeZwvvbOmrQShZaAaQSjrtbwTLCWA`)
 }
