@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
 import Home from '@/views/Home'
+import Profile from '@/components/Profile'
 import Login from '@/views/Login'
 import MyTrips from '@/views/MyTrips'
 import TripDetail from '@/views/TripDetail'
@@ -47,6 +47,11 @@ export default new Router({
       path: '/location-detail',
       name: 'LocationDetail',
       component: LocationDetail
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     }
   ]
 })
