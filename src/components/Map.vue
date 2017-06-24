@@ -52,6 +52,7 @@ export default {
     }
 
     // Pass the directions request to the directions service.
+    console.log('this.direction:', this.direction)
     if (this.direction) {
       let waypoints = []
       for (let point of this.direction) {

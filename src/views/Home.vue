@@ -36,54 +36,54 @@ export default {
     }
   },
   methods: {
+    prepareLocation: function (locations, loc, order) {
+      locations[loc.place_id] = {
+        name: loc.name,
+        order: order,
+        rating: (loc.rating) ? loc.rating : 0,
+        thumbnail: (loc.photos) ? loc.photos[0].photo_reference : '',
+        position: {
+          lat: loc.geometry.location.lat,
+          lng: loc.geometry.location.lng
+        }
+      }
+      return locations
+    },
+    addTrip: function (locations) {
+      var vm = this
+      var userData = getUser()
+      var data = {
+        name: vm.startAt + ' - ' + vm.destination,
+        date: '2017-06-24 11:00:00',
+        locations: locations
+      }
+      return db.ref('/trips/' + userData.uid).push(data).key
+    },
     getFormValues: function () {
       var vm = this
-      console.log(vm.startAt + ' - ' + vm.destination)
-      if (vm.startAt.length === 0 || vm.destination.length === 0) {
-        alert('Please Input StartAt and Destination')
+      if (typeof vm.startAt === 'undefined' || typeof vm.destination === 'undefined' || vm.startAt.length === 0 || vm.destination.length === 0) {
+        alert('Please input origin and destination location')
         return
       }
-      var userData = getUser()
       var locations = {}
       searchPlace(vm.startAt).then(function (response) {
-        if (response.data.results) {
-          locations[response.data.results[0].place_id] = {
-            name: response.data.results[0].name,
-            order: 0,
-            rating: (response.data.results[0].rating) ? response.data.results[0].rating : 0,
-            thumbnail: (response.data.results[0].photos[0].photo_reference) ? response.data.results[0].photos[0].photo_reference : ''
-          }
-        }
-      }).then(function (rrr) {
-        searchPlace(vm.destination).then(function (response) {
-          if (response.data.results) {
-            locations[response.data.results[0].place_id] = {
-              name: response.data.results[0].name,
-              order: 0,
-              rating: (response.data.results[0].rating) ? response.data.results[0].rating : 0,
-              thumbnail: (response.data.results[0].photos[0].photo_reference) ? response.data.results[0].photos[0].photo_reference : ''
+        if (response.data.results.length > 0) {
+          locations = vm.prepareLocation(locations, response.data.results[0], 0)
+          searchPlace(vm.destination).then(function (response) {
+            if (response.data.results.length > 0) {
+              locations = vm.prepareLocation(locations, response.data.results[0], 9999)
+              let tripId = vm.addTrip(locations)
+              vm.$router.push('/trips/' + tripId)
+            } else {
+              alert('Sorry, we cannot find your destination location.')
+              return
             }
-          }
-        })
-      }).then(function () {
-        console.log(locations, '<<<<<<<<< locations')
-        var data = {
-          name: vm.startAt + ' - ' + vm.destination,
-          date: '2017-06-24 11:00:00',
-          locations: locations
+          })
+        } else {
+          alert('Sorry, we cannot find your origin location.')
+          return
         }
-        db.ref('/trips/' + userData.uid).push(
-          data
-        ).then(function () {
-          console.log('thennnn')
-        })
       })
-
-//      searchPlace(vm.destination).then(function (response) {
-//        if (response.data.results) {
-//
-//        }
-//      })
     },
     getStartAt: function (val) {
       this.startAt = val
