@@ -6,6 +6,11 @@
         <div id="location-name" class="location-name">
             <p>{{ location_name }}</p>
         </div>
+        <div>
+            <p>
+                {{ rating }}
+            </p>
+        </div>
     </div>
 </template>
 
@@ -16,6 +21,7 @@ export default {
         location_name: String, 
         photo_reference: String, 
         type: String, 
+        rating: Number,
         maxwidth: { type: Number, default: 100 }, 
         maxheight: { type: Number, default: 100 }
     },
