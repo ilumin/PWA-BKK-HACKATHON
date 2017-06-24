@@ -44,10 +44,10 @@ export default {
             return  getPlaceImage(photo_reference, max_width, max_height);
         },
         addLocation: function(id) {
-            this.$emit('locationId', this.id);
+            this.$emit('addId', this.id);
         },
         deleteLocation: function(id) {
-            this.$emit('locationId', this.id);
+            this.$emit('deleteId', this.id);
         }
     }
 }
