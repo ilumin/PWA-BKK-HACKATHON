@@ -27,7 +27,7 @@ export const authService = {
   isLoggedIn () {
     return initializeAuth.then(user => {
       console.log('initializeAuth:', user)
-      return user && !user.isAnonymous
+      return (user && !user.isAnonymous) && this.user
     })
   },
 
@@ -35,9 +35,7 @@ export const authService = {
     this.user = user
   },
 
-  logout () {
-    this.firebase.auth().signOut().then(() => {
-      this.$router.push('/')
-    })
+  logOut () {
+    this.setUser(null)
   }
 }
