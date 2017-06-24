@@ -40,6 +40,8 @@ export default {
         vm.photo = user.photoURL
         vm.userId = user.uid
         vm.user = user
+      } else {
+        console.error('no permission')
       }
     })
   }
