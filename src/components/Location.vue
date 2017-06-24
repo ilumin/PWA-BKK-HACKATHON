@@ -15,7 +15,7 @@
             <div id="add" class="add" @click=addLocation(location.id)>
                 <icon name="add" width=20 height=20></icon>
             </div>
-            <div id="close" class="close" @click=deleteLocation(location.id)>
+            <div id="delete" class="delete" @click=deleteLocation(location.id)>
                 <icon name="close" width=20 height=20></icon>
             </div>
         </div>
@@ -35,6 +35,8 @@ export default {
     props: ['location'],
     data() {
         return {
+            isAdd: true,
+            isDelete: true
         }
     },
     methods: {
@@ -60,6 +62,12 @@ export default {
 .location-info {
     padding: 5px;
     position: relative;
+}
+.add {
+    float: left;
+}
+.delete {
+    float: right;
 }
 .location-name {}
 .star-rating {}
