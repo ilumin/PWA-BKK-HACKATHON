@@ -6,13 +6,16 @@
 </template>
 
 <script>
-  var predictions =
+  var predictions
   export default {
     name: 'locationAutoComplete',
     props: ['message'],
     methods: {
       autoComplete: function (message) {
-        console.log(message, '<=== msg')
+        this.axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${this.message}&types=geocode&key=AIzaSyDGvRoeZwvvbOmrQShZaAaQSjrtbwTLCWA`).then((response) => {
+          predictions = response.body
+          console.log(predictions)
+        })
       }
     }
   }
