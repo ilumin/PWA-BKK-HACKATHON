@@ -1,6 +1,6 @@
 <template>
   <div class="trip-list">
-    <Trip v-for="trip in trips" :trip="trip" :key="trip.id"></Trip>
+    <Trip v-for="trip in trips" :trip="trip" key=".key"></Trip>
   </div>
 </template>
 

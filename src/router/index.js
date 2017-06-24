@@ -33,13 +33,14 @@ export default new Router({
       beforeEnter: loginRequired
     },
     {
-      path: '/trip-detail',
+      path: '/trips/:trip_id',
       name: 'TripDetail',
       component: TripDetail,
+      props: true,
       beforeEnter: loginRequired
     },
     {
-      path: '/manage-trip',
+      path: '/trips/:trip_id/edit',
       name: 'ManageTrip',
       component: ManageTrip,
       beforeEnter: loginRequired
