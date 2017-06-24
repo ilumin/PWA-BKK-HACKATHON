@@ -33,5 +33,7 @@ export default {
 </script>
 
 <style>
-
+.location-list {
+  margin-top: 10px;
+}
 </style>
