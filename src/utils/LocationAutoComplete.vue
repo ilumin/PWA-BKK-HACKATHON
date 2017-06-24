@@ -29,6 +29,7 @@
     methods: {
       getLabel (item) {
         this.value = item.description
+        this.$emit('item', item)
         return item.description
       },
       updateItems (text) {
