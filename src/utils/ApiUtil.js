@@ -11,3 +11,7 @@ export function autoComplete (value) {
 export function getPlaceDetail (placeId) {
   return axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyAMJ1pWSfYUWu7_Jj7lUy6QY3pwdBONXwk`)
 }
+
+export function searchPlace (q) {
+  return axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${q}&key=AIzaSyAMJ1pWSfYUWu7_Jj7lUy6QY3pwdBONXwk`)
+}

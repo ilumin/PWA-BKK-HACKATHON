@@ -1,6 +1,6 @@
 <template>
     <div class="location-auto-complete">
-        <Autocomplete :items="items" v-model="item" :get-label="getLabel" :component-item='template' @update-items="updateItems">
+        <Autocomplete :items="items" @change="onChangeInput"  v-model="item" :get-label="getLabel" :component-item='template' @update-items="updateItems">
         </Autocomplete><a class="clear-input" @click="clearInput" v-if="value">x</a>
     </div>
 </template>
@@ -23,20 +23,26 @@
         value: '',
         item: {},
         items: [],
-        template: ItemAutoComplete,
+        template: ItemAutoComplete
       }
     },
     methods: {
+      onChangeInput (val) {
+        this.value = val
+        this.$emit('value', this.value)
+      },
       getLabel (item) {
         this.value = item.description
-        this.$emit('item', item)
+        this.$emit('value', this.value)
         return item.description
       },
       updateItems (text) {
         var vm = this
         autoComplete(text).then(function (response) {
-          if(response.data.predictions) {
+          if (response.data.status === 'OK') {
             vm.items = response.data.predictions
+          } else {
+            vm.items = []
           }
         })
       },
