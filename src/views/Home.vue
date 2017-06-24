@@ -4,9 +4,7 @@
       <form>
         <AutoComplete @value="getStartAt"></AutoComplete>
         <br>
-        <br>
         <AutoComplete @value="getDestination"></AutoComplete>
-        <br>
         <br>
         <b-button @click.prevent="getFormValues()">SUBMIT</b-button>
       </form>
@@ -104,7 +102,12 @@ export default {
 
 <style>
 .main-layout {
+  display: block;
   width: 50%;
   margin: auto;
+  text-align: center;
+}
+.v-autocomplete {
+  float: none !important;
 }
 </style>
