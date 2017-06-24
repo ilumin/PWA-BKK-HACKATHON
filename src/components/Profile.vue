@@ -17,10 +17,13 @@ import Firebase from 'firebase'
 import { getUser, authService } from '@/utils/FirebaseApp'
 
 export default {
-  name: 'hello',
+  name: 'Profile',
   methods: {
     logOut () {
-      Firebase.auth().signOut()
+      authService.logOut()
+      Firebase.auth().signOut().then(() => {
+        this.$router.push('/')
+      })
     }
   },
   data () {

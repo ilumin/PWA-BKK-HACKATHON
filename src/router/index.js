@@ -66,7 +66,16 @@ export default new Router({
 })
 
 function loginRequired (to, from, next) {
-  authService.isLoggedIn().then(user => {
-    next(user ? '/login' : '')
+  authService.isLoggedIn().then(isLoggedIn => {
+    // next(isLoggedIn ? '' : '/login')
+    console.log('isLoggedIn:', isLoggedIn)
+    console.log('authService.user:', authService.user)
+    if (isLoggedIn) {
+      console.log('just go next')
+      next()
+    } else {
+      console.log('no permission login first')
+      next('/login')
+    }
   })
 }
