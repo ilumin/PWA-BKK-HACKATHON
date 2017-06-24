@@ -1,6 +1,6 @@
 <template>
   <div class="location-list">
-        <location @addId="addId(location.id)" @deleteId="deleteId(location.id)" v-for="location in locations" 
+        <location v-if="locations.length > 0" @addId="addId(location.id)" @deleteId="deleteId(location.id)" v-for="location in locations" 
             :location=location
             :key=location.id></location>
   </div>

@@ -26,16 +26,15 @@ export default {
       var vm = this
       searchPlace(vm.q).then(function (response) {
         console.log(JSON.stringify(response.data.results))
-        if (response.data.results.length === 0) {
+        vm.locations = []
+        if (response.data.results.length === 0 || response.data.results.length === undefined) {
           return
         }
-        response.data.results.splice(0, 10)
-
-        response.data.results.forEach(function (place) {
+        response.data.results.splice(0, 5).forEach(function (place) {
           var location = {
             id: 'place.place_id',
-            rating: 'place.rating',
-            name: 'place.name',
+            location_name: String(place.name),
+            rating: place.rating,
             type: 'add',
             photo_reference: 'place.photos[0].photo_reference',
             max_width: 100,
@@ -44,7 +43,6 @@ export default {
           vm.locations.push(location)
         }, this)
       })
-      console.log(vm.locations)
     }
   }
 }

@@ -3,8 +3,8 @@
     <div id="location-photo" class="location-photo">
       <img :src="getImage(location.photoReference, location.maxWidth, location.maxHeight)"></img>
     </div>
-    <div id="location-info" class="location-info">
-      <div id="location-name" class="location-name">
+    <div class="location-info">
+      <div class="location-name">
         <p>{{ location.location_name }}</p>
       </div>
       <div id="star-rating">
@@ -20,7 +20,9 @@
       </div>
     </div>
     <div>
-      <location-detail></location-detail>
+       <!-- 
+       <location-detail></location-detail>
+        -->
     </div>
   </div>
 </template>
