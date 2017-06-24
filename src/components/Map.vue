@@ -23,7 +23,8 @@ export default {
   },
   data () {
     return {
-      mapObject: null
+      mapObject: null,
+      mapMarkers: []
     }
   },
   mounted () {
@@ -38,11 +39,22 @@ export default {
       zoom: 7
     });
 
+    // set markers
+    if (this.markers) {
+      for (let point of this.markers) {
+        this.mapMarkers.push(new google.maps.Marker({
+          position: point.position,
+          map: this.mapObject
+        }))
+      }
+
+      this.mapObject.setCenter(this.mapMarkers[0].getPosition())
+    }
+
     // Pass the directions request to the directions service.
     if (this.direction) {
       let waypoints = []
       for (let point of this.direction) {
-        console.log('point:', point)
         waypoints.push({
           location: new google.maps.LatLng(point.position),
           stopover: true
@@ -63,7 +75,6 @@ export default {
 
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
-          // Display the route on the map.
           directionsDisplay.setDirections(response);
         } else {
           console.error('Directions request failed due to ', status)

@@ -5,9 +5,9 @@ import Map from './../src/components/Map.vue'
 Vue.component('Map', Map)
 
 const markers = [
-  { position: {lat: 1.38, lng: 103.8} },
-  { position: {lat: 1.39, lng: 103.9} },
-  { position: {lat: 1.35, lng: 103.5} },
+  { position: {lat: 1.385, lng: 103.82} },
+  { position: {lat: 1.381, lng: 103.91} },
+  { position: {lat: 1.382, lng: 103.86} },
 ];
 
 const direction = [
