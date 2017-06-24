@@ -15,7 +15,7 @@ export default {
   },
   mounted () {
     const uiConfig = {
-      signInSuccessUrl: '/main',
+      signInSuccessUrl: '/',
       signInOptions: [
         firebase.auth.FacebookAuthProvider.PROVIDER_ID
       ]

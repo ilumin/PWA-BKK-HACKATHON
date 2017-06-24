@@ -31,14 +31,17 @@ export default {
       user: {}
     }
   },
-  created () {
-    this.user = firebase.auth().currentUser
-    if (this.user) {
-      this.name = this.user.displayName
-      this.email = this.user.email
-      this.photo = this.user.photoURL
-      this.userId = this.user.uid
-    }
+  mounted () {
+    let vm = this
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        vm.name = user.displayName
+        vm.email = user.email
+        vm.photo = user.photoURL
+        vm.userId = user.uid
+        vm.user = user
+      }
+    })
   }
 }
 </script>
