@@ -40,7 +40,7 @@ export default new Router({
       beforeEnter: loginRequired
     },
     {
-      path: '/manage-trip',
+      path: '/trips/:trip_id/edit',
       name: 'ManageTrip',
       component: ManageTrip,
       beforeEnter: loginRequired
