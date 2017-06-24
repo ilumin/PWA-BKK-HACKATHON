@@ -12,10 +12,10 @@
             </div>
         </div>
         <div id="action">
-            <div id="add" class="add" @click=addLocation(location.id)>
+            <div id="add" v-bind:class="{addActive:isAdd}" class="add" @click=addLocation(location.id)>
                 <icon name="add" width=20 height=20></icon>
             </div>
-            <div id="delete" class="delete" @click=deleteLocation(location.id)>
+            <div id="delete" v-bind:class="{deleteActive:isDelete}" class="delete" @click=deleteLocation(location.id)>
                 <icon name="close" width=20 height=20></icon>
             </div>
         </div>
@@ -65,9 +65,17 @@ export default {
 }
 .add {
     float: left;
+    display: none;
+}
+.addActive {
+    display: block;
 }
 .delete {
-    float: right;
+    position: inherit;
+    display: none;
+}
+.deleteActive {
+    display: block;
 }
 .location-name {}
 .star-rating {}
