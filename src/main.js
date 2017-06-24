@@ -10,8 +10,8 @@ import VueAxios from 'vue-axios'
 import router from '@/router'
 
 // import { initFirebase } from '@/utils/FirebaseApp'
-import firebase from 'firebase'
-import { config } from '@/firebase.config'
+// import firebase from 'firebase'
+// import { config } from '@/firebase.config'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -29,10 +29,13 @@ new Vue({
   router,
   template: '<App/>',
   created () {
-    firebase.initializeApp(config)
-    firebase.auth().onAuthStateChanged((user) => {
-      this.$router.push(user ? '/' : '/login')
-    })
+    console.log('App created')
+    // firebase.initializeApp(config)
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (!user) {
+    //     this.$router.push('/')
+    //   }
+    // })
   },
   components: { App }
 })

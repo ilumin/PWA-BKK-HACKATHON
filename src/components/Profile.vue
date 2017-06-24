@@ -14,6 +14,7 @@
 
 <script>
 import firebase from 'firebase'
+import { getUser, authService } from '@/utils/FirebaseApp'
 
 export default {
   name: 'hello',
@@ -33,7 +34,10 @@ export default {
   },
   mounted () {
     let vm = this
+    console.log('getUser:', getUser())
+    console.log('getUser:', authService.isLoggedIn())
     firebase.auth().onAuthStateChanged((user) => {
+      console.log('mounted')
       if (user) {
         vm.name = user.displayName
         vm.email = user.email
