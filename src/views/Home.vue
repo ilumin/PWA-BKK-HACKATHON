@@ -8,7 +8,7 @@
       </form>  
     </div>
     <div>
-      <my-button route="/1234"></my-button>
+      <my-button label="My Trips" route="/1234"></my-button>
     </div>
   </div>
 </template>
