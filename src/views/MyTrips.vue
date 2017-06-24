@@ -1,11 +1,13 @@
 <template>
   <div>My Trips page
-    <TripList :trips="tripsVar"></TripList>
+    <TripList :trips="trips"></TripList>
   </div>
 </template>
 
 <script>
+  import {getUser, db} from '@/utils/FirebaseApp'
   import TripList from '@/components/TripList'
+
   export default {
     name: 'myTrips',
     components: {
@@ -16,26 +18,19 @@
         console.log('fetchTrips')
       }
     },
-    data () {
-      return {
-        tripsVar: [{
-          id: '1',
-          img: 'http://cdn.www.ministry-to-children.com/wp-content/uploads/2015/07/family-road-trip.jpg',
-          name: 'trip1',
-          date: '02 aug 2017'
-        },
-        {
-          id: '2',
-          img: 'http://cdn.www.ministry-to-children.com/wp-content/uploads/2015/07/family-road-trip.jpg',
-          name: 'trip2',
-          date: '03 aug 2017'
+    firebase: {
+      trips: {
+        source: db.ref('trips/' + getUser().uid),
+        cancelCallback (error) {
+          console.error(error)
         }
-        ]
       }
-    }
+    },
+    data: () => ({
+      trips: []
+    })
   }
 </script>
 
 <style>
-
 </style>
