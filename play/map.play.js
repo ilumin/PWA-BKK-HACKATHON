@@ -4,13 +4,11 @@ import Map from './../src/components/Map.vue'
 
 Vue.component('Map', Map)
 
-// AIzaSyCbWJ-1eUpVhivVuixtkkWdMFvSX4tfKvA
-
-const markers = {
-  '01': {lat: 1.38, lng: 103.8},
-  '02': {lat: 1.39, lng: 103.9},
-  '03': {lat: 1.37, lng: 103.7},
-};
+const markers = [
+  { position: {lat: 1.38, lng: 103.8} },
+  { position: {lat: 1.39, lng: 103.9} },
+  { position: {lat: 1.35, lng: 103.5} },
+];
 
 const direction = {
   '1': {lat: 1.37, lng: 103.7},
