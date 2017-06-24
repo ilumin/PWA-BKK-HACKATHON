@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Profile from '@/components/Profile'
 import Login from '@/views/Login'
 
 Vue.use(Router)
@@ -13,9 +13,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '/main',
-      name: 'Main',
-      component: Hello
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     }
   ]
 })
