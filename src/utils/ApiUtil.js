@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-var keyApi = 'AIzaSyDGvRoeZwvvbOmrQShZaAaQSjrtbwTLCWA'
+var keyApi = 'AIzaSyBhmfYqx0u4NWnSavh7CM3o0JtTJE-PP7U'
 
 export function getPlaceImage (photoReference, maxWidth, maxHeight) {
-  return 'https://maps.googleapis.com/maps/api/place/photo?maxheight=' + maxHeight + '&maxwidth=' + maxWidth + '&photoreference=' + photoReference + '&key=AIzaSyByIme09U1XhbfSj3_6jDMwKWIgHORzzFU'
+  return 'https://maps.googleapis.com/maps/api/place/photo?maxheight=' + maxHeight + '&maxwidth=' + maxWidth + '&photoreference=' + photoReference + '&key=AIzaSyBhmfYqx0u4NWnSavh7CM3o0JtTJE-PP7U'
 }
 
 export function autoComplete (value) {
@@ -11,9 +11,9 @@ export function autoComplete (value) {
 }
 
 export function getPlaceDetail (placeId) {
-  return axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyByIme09U1XhbfSj3_6jDMwKWIgHORzzFU`)
+  return axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyBhmfYqx0u4NWnSavh7CM3o0JtTJE-PP7U`)
 }
 
 export function searchPlace (q) {
-  return axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${q}&key=AIzaSyDGvRoeZwvvbOmrQShZaAaQSjrtbwTLCWA`)
+  return axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${q}&key=AIzaSyBhmfYqx0u4NWnSavh7CM3o0JtTJE-PP7U`)
 }
