@@ -9,7 +9,8 @@
 
 <script>
 import LocationList from '@/components/LocationList.vue'
-import { searchPlace } from '../utils/ApiUtil'
+import { searchPlace, getPlaceDetail } from '../utils/ApiUtil'
+import { getUser, db } from '@/utils/FirebaseApp'
 export default {
   name: 'locationSearch',
   components: {
@@ -25,27 +26,38 @@ export default {
     searchPlace: function () {
       var vm = this
       searchPlace(vm.q).then(function (response) {
-        console.log(JSON.stringify(response.data.results))
         vm.locations = []
         if (response.data.results.length === 0 || response.data.results.length === undefined) {
           return
         }
         response.data.results.splice(0, 5).forEach(function (place) {
+          console.log('place = ' + JSON.stringify(place))
           var location = {
             id: place.place_id,
-            location_name: String(place.name),
+            locationName: String(place.name),
             rating: place.rating,
             type: 'add',
-            photo_reference: place.photos[0].photo_reference,
-            max_width: 100,
-            max_height: 100
+            photoReference: place.photos[0].photo_reference,
+            maxWidth: 100,
+            maxHeight: 100
           }
           vm.locations.push(location)
         }, this)
       })
     },
-    addId: function (id) {
-      console.log('id = ' + id)
+    addId: function (locationId) {
+      console.log('id = ' + locationId)
+      this.addLocationToTrip('123', locationId)
+      // this.addLocationToTrip(tripId, locationId)
+    },
+    addLocationToTrip: function (tripId, locationId) {
+      // TODO get user uid
+      // TODO get location by ID
+      getPlaceDetail(locationId).then(function (location) {
+        // TODO add this locationId to trip [FIREBASE]
+        const uid = getUser().uid
+
+      })
     }
   }
 }

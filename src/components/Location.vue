@@ -6,7 +6,7 @@
     </div>
     <div class="location-info">
       <div class="location-name">
-        <p>{{ location.location_name }}</p>
+        <p>{{ location.locationName }}</p>
       </div>
       <div id="star-rating">
         <star-rating :rating=location.rating :read-only=true :star-size="15" :increment="0.5"></star-rating>
