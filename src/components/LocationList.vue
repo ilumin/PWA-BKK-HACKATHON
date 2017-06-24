@@ -2,7 +2,7 @@
   <div class="location-list">
         <location v-for="location in locations" 
             :location=location
-            :key=location.location_name></location>
+            :key=location.id></location>
   </div>
 </template>
 
