@@ -1,18 +1,5 @@
 <template lang="html">
-  <div class="components map">
-    <gmap-map
-      class="gmap"
-      :center="{lat:1.38, lng:103.8}"
-      :zoom="7"
-    >
-      <gmap-marker
-        v-for="(m, index) in markers"
-        :key="index"
-        :position="m.position"
-        :clickable="true"
-        :draggable="false"
-      ></gmap-marker>
-    </gmap-map>
+  <div ref="gmap" class="components gmap">
   </div>
 </template>
 
@@ -31,9 +18,40 @@ export default {
   name: 'Map',
   props: ['markers', 'direction'],
   mounted () {
-    console.log('markers:', this.markers)
-    console.log('direction:', this.direction)
-    console.log('VueGoogleMaps:', VueGoogleMaps)
+    const element = this.$refs['gmap']
+
+    function initMap() {
+      var chicago = {lat: 41.85, lng: -87.65};
+      var indianapolis = {lat: 39.79, lng: -86.14};
+
+      var map = new google.maps.Map(element, {
+        center: chicago,
+        scrollwheel: false,
+        zoom: 7
+      });
+
+      var directionsDisplay = new google.maps.DirectionsRenderer({
+        map: map
+      });
+
+      // Set destination, origin and travel mode.
+      var request = {
+        destination: indianapolis,
+        origin: chicago,
+        travelMode: 'DRIVING'
+      };
+
+      // Pass the directions request to the directions service.
+      var directionsService = new google.maps.DirectionsService();
+      directionsService.route(request, function(response, status) {
+        if (status == 'OK') {
+          // Display the route on the map.
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
+
+    initMap()
   }
 }
 </script>
