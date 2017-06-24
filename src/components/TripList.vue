@@ -1,6 +1,6 @@
 <template>
     <div class="trip-list">
-        <trip v-for="trip in trips" :trip="trip" :key="$index"></trip>
+        <trip v-for="trip in trips" :trip="trip" :key="trip.id"></trip>
     </div>
 </template>
 

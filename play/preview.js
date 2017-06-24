@@ -6,5 +6,6 @@ import './my-button.play'
 import './error-message.play'
 import './location.play'
 import './location_autocomplete.play'
+import './my-trips.play'
 
 preview()
