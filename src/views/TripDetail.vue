@@ -85,11 +85,6 @@ export default {
 .trip-content {
   padding-bottom: 10px;
 }
-.page-header {
-  text-align: center;
-  padding: 10px 0;
-  margin-bottom: 10px;
-}
 .map-content {
   position: absolute;
   top: 0; left: 0; right: 0;

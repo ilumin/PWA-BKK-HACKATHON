@@ -80,5 +80,4 @@ export default {
 .rating-text { display: none; }
 .card-img { width: 100%; height: auto; display: block }
 .location-info { position: absolute; left: 0; bottom: 0; right: 0; padding: 10px; }
-.card-title { color: #FFF; text-shadow: 0 0 .5em rgba(0,0,0,.8) }
 </style>
