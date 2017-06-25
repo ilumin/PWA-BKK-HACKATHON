@@ -2,6 +2,11 @@
   <div class="view my-trips">
     <h3 class="page-header">My Trip</h3>
     <TripList :trips="trips"></TripList>
+    <b-button
+      class="btn-lg btn-block btn-info"
+      @click="gotoHome()">
+      Home
+    </b-button>
   </div>
 </template>
 
@@ -21,9 +26,17 @@
     },
     data: () => ({
       trips: []
-    })
+    }),
+    methods: {
+      gotoHome () {
+        this.$router.push('/')
+      }
+    }
   }
 </script>
 
 <style>
+.my-trips {
+  padding-bottom: 10px;
+}
 </style>
