@@ -63,6 +63,7 @@ export default {
                 id: place_id,
                 locationName: String(item.name),
                 rating: item.rating,
+                order: item.order,
                 type: 'simple',
                 photoReference: item.thumbnail,
                 thumbnail: item.thumbnail,
