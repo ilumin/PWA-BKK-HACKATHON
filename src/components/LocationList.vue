@@ -3,7 +3,7 @@
     <location v-if="locations.length > 0"
       @addId="addId(location.id)"
       @deleteId="deleteId(location.id)"
-      v-for="location in locations"
+      v-for="location in waypoints"
       :location="location"
       :key="location.id">
     </location>
@@ -17,6 +17,11 @@ export default {
   props: ['locations'],
   components: {
     Location
+  },
+  computed: {
+    waypoints () {
+      return this.locations.sort((a, b) => a.order > b.order)
+    }
   },
   methods: {
     addId: function (id) {

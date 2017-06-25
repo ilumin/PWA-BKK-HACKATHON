@@ -22,15 +22,18 @@ export default {
       {types: ['geocode']}
     )
 
+    autocomplete.setComponentRestrictions({'country': ['th']});
+
     autocomplete.addListener('place_changed', () => {
       const thumbSize = {maxWidth: 200, maxHeight: 200}
       const place = autocomplete.getPlace()
+
       this.$emit('update:location', {
         id: place.place_id,
         name: place.name,
         order: 1,
         rating: place.rating ? place.rating : 0,
-        thumbnail: place.photos.pop().getUrl(thumbSize),
+        thumbnail: place.photos ? place.photos.pop().getUrl(thumbSize) : '',
         position: {
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng()

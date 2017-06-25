@@ -63,6 +63,7 @@ export default {
                 id: place_id,
                 locationName: String(item.name),
                 rating: item.rating,
+                order: item.order,
                 type: 'simple',
                 photoReference: item.thumbnail,
                 thumbnail: item.thumbnail,
@@ -83,11 +84,6 @@ export default {
 }
 .trip-content {
   padding-bottom: 10px;
-}
-.page-header {
-  text-align: center;
-  padding: 10px 0;
-  margin-bottom: 10px;
 }
 .map-content {
   position: absolute;
