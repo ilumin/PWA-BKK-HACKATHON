@@ -1,13 +1,19 @@
 <template>
-  <div>
-    <h1>Trip Detail page {{ trip_id }}</h1>
-    <template v-if="loaded">
-      <GMap :direction="direction"></GMap>
-    </template>
-    <template v-if="loaded">
-      <LocationList :locations="locations"></LocationList>
-    </template>
-    <!--<MyButton label="Edit Trip" :route="'/trips/' + trip_id + '/edit'"></MyButton>-->
+  <div class="view trip-detail">
+    <div class="map-content">
+      <template v-if="loaded">
+        <GMap :direction="direction"></GMap>
+      </template>
+    </div>
+    <div class="map-content-space">
+    </div>
+    <div class="trip-content">
+      <h3 class="page-header">{{ trip.name }}</h3>
+      <template v-if="loaded">
+        <LocationList :locations="locations"></LocationList>
+      </template>
+      <b-button class="btn-lg btn-block btn-info">Go to My Trip</b-button>
+    </div>
   </div>
 </template>
 
@@ -62,4 +68,28 @@ export default {
 </script>
 
 <style>
+.trip-detail {
+  height: 100%;
+}
+.trip-content {
+  padding-bottom: 10px;
+}
+.page-header {
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: solid 1px #EEE;
+}
+.map-content {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 80%;
+  z-index: 2
+}
+.map-content-space {
+  position: relative;
+  width: auto;
+  height: 80%;
+  z-index: 1
+}
 </style>

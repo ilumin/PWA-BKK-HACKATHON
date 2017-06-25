@@ -1,10 +1,13 @@
 <template>
-  <div class="location-list">
-    <location v-if="locations.length > 0" @addId="addId(location.id)" @deleteId="deleteId(location.id)" v-for="location in locations" 
-      :location=location
-      :key=location.id >
+  <ul class="list-group location-list">
+    <location v-if="locations.length > 0"
+      @addId="addId(location.id)"
+      @deleteId="deleteId(location.id)"
+      v-for="location in locations"
+      :location="location"
+      :key="location.id">
     </location>
-  </div>
+  </ul>
 </template>
 
 <script>
@@ -34,6 +37,6 @@ export default {
 
 <style>
 .location-list {
-  margin-top: 10px;
+  margin: 10px 0;
 }
 </style>

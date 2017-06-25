@@ -1,5 +1,5 @@
 <template>
-  <div class="location">
+  <li class="list-group-item location">
     <div class="location-info">
       <div id="location-photo" class="location-photo" @click="routeImage(location.id)">
         <img :src="getImage(location.photoReference, location.maxWidth, location.maxHeight)"></img>
@@ -19,8 +19,7 @@
         <icon name="close" width=20 height=20></icon>
       </div>
     </div>
-    <hr>
-  </div>
+  </li>
 </template>
 
 <script>
