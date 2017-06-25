@@ -27,4 +27,24 @@ npm run e2e
 npm test
 ```
 
+## TODO List
+
+- [x] ~Login Page
+- [x] Home Page
+  - Auto Complete Location Input
+  - Create New Trip
+- [x] My Trip Page
+  - User's Trip List
+- [x] Trip Detail Page
+  - Trip's Routing Map
+  - Trip's Location List
+- [x] Location Detail Page
+- [ ] Search And Add Waypoint Location Page (Future Plan)
+  - Search Location
+  - Add New Waypoint Location
+- [ ] Trip Management Page (Future Plan)
+  - Trip's Routing Map With Waypoint
+  - Edit Trip Detail
+  - Remove And Re-ordering Location
+ 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
