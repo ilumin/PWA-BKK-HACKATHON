@@ -12,7 +12,11 @@
       <template v-if="loaded">
         <LocationList :locations="locations"></LocationList>
       </template>
-      <b-button class="btn-lg btn-block btn-info">Go to My Trip</b-button>
+      <b-button
+        class="btn-lg btn-block btn-info"
+        @click="gotoMyTrip()">
+        Go to My Trip
+      </b-button>
     </div>
   </div>
 </template>
@@ -37,6 +41,11 @@ export default {
     locations: {},
     loaded: false
   }),
+  methods: {
+    gotoMyTrip () {
+      this.$router.push('/my-trip')
+    }
+  },
   firebase () {
     return {
       trip: {
