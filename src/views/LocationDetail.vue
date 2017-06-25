@@ -3,21 +3,22 @@
     <div>
       <h1>Location Detail page</h1>
     </div>
-    <div>
-      <img :src=image_url></img>
-    </div>
-    <div>
-      <h2>Name: {{ place_id }}</h2>
-      <h2>Name: {{ name }}</h2>
-    </div>
-    <div>
-      <h2>Address: {{ address }}</h2>
-    </div>
-    <div>
-      <h2>Rating: {{ rating }}</h2>
-    </div>
-    <div>
-      <h2>Telephone: {{ telephone }}</h2>
+    <div class="card">
+      <img class="card-img" :src=image_url></img>
+      <div class="card-block location-info">
+        <h3 class="card-title">
+          Name: {{ name }}
+        </h3>
+        <h3 class="card-title">
+          Address: {{ address }}
+        </h3>
+        <h3 class="card-title">
+          Rating: {{ rating }}
+        </h3>
+        <h2 class="card-title">
+          Telephone: {{ telephone }}
+        </h2>
+      </div>
     </div>
   </div>
 </template>
