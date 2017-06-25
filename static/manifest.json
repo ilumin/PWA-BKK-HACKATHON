@@ -1,6 +1,6 @@
 {
-  "name": "pwa-hackathon",
-  "short_name": "pwa-hackathon",
+  "name": "TripPlanner",
+  "short_name": "TripPlanner",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",
