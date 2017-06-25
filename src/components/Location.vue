@@ -76,7 +76,7 @@ export default {
   background-color: #f4f6f6;
 }
 
-.card { position: relative; margin-bottom: 10px; }
+.card { position: relative; margin-bottom: 10px; border: 0; box-shadow: 0 0 .5em rgba(0,0,0,.3) }
 .rating-text { display: none; }
 .card-img { width: 100%; height: auto; display: block }
 .location-info { position: absolute; left: 0; bottom: 0; right: 0; padding: 10px; }
