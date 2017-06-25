@@ -7,20 +7,24 @@
       <div>
         <img class="card-img" :src=image_url />
       </div>
-      <div class="card-block">
-        <h3 class="card-title">
-          Name: {{ name }}
-        </h3>
-        <h3 class="card-title">
-          Address: {{ address }}
-        </h3>
-        <h3 class="card-title">
+      <b-card :header=name
+        class="mb-2"
+        show-footer
+      >
+        <div>
+          Address: <span class="text-muted">{{ address }}</span>
+        </div>
+        <!--<div>
+          Rating: <span class="text-muted">{{ rating }}</span>
+        </div>-->
+        <div>
+          Telephone: <span class="text-muted">{{ adtelephonedress }}</span>
+        </div>
+
+        <small slot="footer" class="text-muted">
           Rating: {{ rating }}
-        </h3>
-        <h2 class="card-title">
-          Telephone: {{ telephone }}
-        </h2>
-      </div>
+        </small>
+      </b-card>
     </div>
     <div id="otherMap"></div>
   </div>
