@@ -79,4 +79,7 @@ export default {
     margin: 0 auto;
     width: 100%;
   }
+  .card-block{
+    background-color: #555
+  }
 </style>
