@@ -6,6 +6,7 @@ import App from '@/App'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 import router from '@/router'
 
@@ -20,6 +21,12 @@ import 'firebaseui/dist/firebaseui.css'
 Vue.use(VueFire)
 Vue.use(BootstrapVue)
 Vue.use(VueAxios, axios)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyCbWJ-1eUpVhivVuixtkkWdMFvSX4tfKvA',
+    libraries: 'places'
+  }
+})
 
 Vue.config.productionTip = false
 

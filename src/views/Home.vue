@@ -7,6 +7,12 @@
         <AutoComplete @value="getDestination"></AutoComplete>
         <br>
         <b-button class="my-button" @click.prevent="getFormValues()">Submit</b-button>
+        <hr>
+        <LocationSearch
+          placeholder="Enter starting point"
+          @update:location="location => startAt = location">
+        </LocationSearch>
+        start at = {{startAt}}
       </form>
     </div>
     <hr>
@@ -18,6 +24,7 @@
 
 <script>
 import MyButton from '@/components/MyButton.vue'
+import LocationSearch from '@/components/LocationSearch.vue'
 import AutoComplete from '@/utils/LocationAutoComplete.vue'
 import {searchPlace} from '@/utils/ApiUtil'
 import {getUser, db} from '@/utils/FirebaseApp'
@@ -26,6 +33,7 @@ export default {
   name: 'home',
   components: {
     MyButton,
+    LocationSearch,
     AutoComplete
   },
   data () {
@@ -96,6 +104,10 @@ export default {
         trips: db.ref('trips')
       }
     }
+  },
+
+  mounted () {
+    console.log('mounted')
   }
 }
 </script>
