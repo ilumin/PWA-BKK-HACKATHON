@@ -20,6 +20,7 @@
         </h2>
       </div>
     </div>
+    <div id="otherMap"></div>
   </div>
 </template>
 
@@ -36,14 +37,7 @@ export default {
   watch: {
     place_id: function (placeId) {
       var vm = this
-      getPlaceDetail(placeId).then(function (response) {
-        vm.place_id = placeId
-        vm.rating = response.data.result.rating
-        vm.address = response.data.result.formatted_address
-        vm.telephone = response.data.result.formatted_phone_number
-        vm.name = response.data.result.name
-        vm.image_url = getPlaceImage(response.data.result.photos[0].photo_reference, 300, 300)
-      })
+      getPlaceDetail(placeId, vm.getDetail)
     }
   },
   data () {
@@ -59,6 +53,20 @@ export default {
   }, 
   mounted () {
     this.place_id = this.router_place_id
+  },
+  methods: {
+    getDetail: function (response, status) {
+      console.log(response, '<========= response')
+      var vm = this
+      // vm.place_id = placeId
+      vm.rating = response.rating
+      vm.address = response.formatted_address
+      vm.telephone = response.formatted_phone_number
+      vm.name = response.name
+      vm.image_url = response.photos[0].getUrl({
+        maxWidth: 640
+      })
+    }
   }
 }
 </script>
