@@ -52,7 +52,7 @@ export default new Router({
       beforeEnter: loginRequired
     },
     {
-      path: '/location-detail',
+      path: '/location-detail/:place_id',
       name: 'LocationDetail',
       component: LocationDetail,
       beforeEnter: loginRequired

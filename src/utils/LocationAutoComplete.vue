@@ -103,8 +103,12 @@
         font-family: sans-serif;
     }
     .v-autocomplete {
-        display: inline;
-        float:left;
+        width: 100%;
+      
+    }
+    .v-autocomplete-list {
+        width: 100%;
+        z-index: 10;
     }
     .clear-input{
         padding: 0 5px;

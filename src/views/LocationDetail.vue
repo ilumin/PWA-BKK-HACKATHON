@@ -33,7 +33,9 @@ export default {
   watch: {
     place_id: function (placeId) {
       var vm = this
+      console.log('ppppp = ' + vm.place_id)
       getPlaceDetail(placeId).then(function (response) {
+        vm.place_id = placeId
         vm.rating = response.data.result.rating
         vm.address = response.data.result.formatted_address
         vm.telephone = response.data.result.formatted_phone_number
