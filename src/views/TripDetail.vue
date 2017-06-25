@@ -56,6 +56,7 @@ export default {
                 rating: item.rating,
                 type: 'simple',
                 photoReference: item.thumbnail,
+                thumbnail: item.thumbnail,
                 maxWidth: 100,
                 maxHeight: 100
               }

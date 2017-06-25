@@ -1,5 +1,5 @@
 <template>
-  <ul class="list-group location-list">
+  <div class="location-list">
     <location v-if="locations.length > 0"
       @addId="addId(location.id)"
       @deleteId="deleteId(location.id)"
@@ -7,7 +7,7 @@
       :location="location"
       :key="location.id">
     </location>
-  </ul>
+  </div>
 </template>
 
 <script>

@@ -1,25 +1,18 @@
 <template>
-  <li class="list-group-item location">
-    <div class="location-info">
-      <div id="location-photo" class="location-photo" @click="routeImage(location.id)">
-        <img :src="getImage(location.photoReference, location.maxWidth, location.maxHeight)"></img>
-      </div>
-      <div class="location-name">
-        <p>{{ location.locationName }}</p>
-      </div>
-      <div id="star-rating">
-        <star-rating :rating=location.rating :read-only=true :star-size="15" :increment="0.5"></star-rating>
-      </div>
+  <div class="card location">
+    <img :src="location.thumbnail" class="card-img">
+    <div class="card-block location-info">
+      <h3 class="card-title">
+        {{ location.locationName }}
+      </h3>
+      <star-rating
+        :rating="location.rating"
+        :read-only="true"
+        :star-size="15"
+        :increment="0.5">
+      </star-rating>
     </div>
-    <div id="action">
-      <div id="add" v-bind:class="{addActive:isAdd}" class="add" @click=addLocation(location.id)>
-        <icon name="add" width=20 height=20></icon>
-      </div>
-      <div id="delete" v-bind:class="{deleteActive:isDelete}" class="delete" @click=deleteLocation(location.id)>
-        <icon name="close" width=20 height=20></icon>
-      </div>
-    </div>
-  </li>
+  </div>
 </template>
 
 <script>
@@ -65,11 +58,6 @@ export default {
   padding: 5px;
   position: relative;
 }
-.location-info {
-  margin: 5px;
-  position: relative;
-  height: 100px;
-}
 .add {
   float: left;
   display: none;
@@ -90,4 +78,10 @@ export default {
 .location:hover {
   background-color: #f4f6f6;
 }
+
+.card { position: relative; margin-bottom: 10px; }
+.rating-text { display: none; }
+.card-img { width: 100%; height: auto; display: block }
+.location-info { position: absolute; left: 0; bottom: 0; right: 0; padding: 10px; }
+.card-title { color: #FFF; text-shadow: 0 0 .5em rgba(0,0,0,.8) }
 </style>
