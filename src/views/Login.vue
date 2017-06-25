@@ -1,5 +1,6 @@
 <template>
   <div class="view login">
+    <h3 class="tripplanner-header">TripPlanner</h3>
     <div id="firebaseui-auth-container"></div>
   </div>
 </template>
@@ -38,10 +39,18 @@ export default {
   width: 110%;
 }
 .firebaseui-idp-facebook {
-  position: absolute;
+  position: absolute !important;
   left: 50%;
   top: 50%;
-  margin-left: -110px;
-  margin-top: -50px;
+  margin-left: -110px !important;
+  margin-top: -50px !important;
+}
+.tripplanner-header {
+  color: #fff;
+  position: absolute !important;
+  left: 60%;
+  top: 42%;
+  margin-left: -110px !important;
+  margin-top: -50px !important;
 }
 </style>
