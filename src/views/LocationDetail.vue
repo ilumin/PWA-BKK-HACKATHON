@@ -4,10 +4,11 @@
       <h1>Location Detail</h1>
     </div>
     <div class="card">
-      <div>
+      <!--<div>
         <img class="card-img" :src=image_url />
-      </div>
+      </div>-->
       <b-card :header=name
+        :img=image_url
         class="mb-2"
         show-footer
       >
@@ -27,17 +28,26 @@
       </b-card>
     </div>
     <div id="otherMap"></div>
+  
+    <b-button
+      class="btn-lg btn-block btn-info"
+      @click="gotoMyTrip()">
+      Back
+    </b-button>
   </div>
+  
 </template>
 
 <script>
 import StarRating from 'vue-star-rating'
+import Icon from 'vue-icon'
 import { getPlaceDetail, getPlaceImage } from '../utils/ApiUtil'
 export default {
   name: 'locationDetail',
   props: ['router_place_id'],
   components: [
-    StarRating
+    StarRating,
+    Icon
   ],
   
   watch: {
@@ -61,6 +71,9 @@ export default {
     this.place_id = this.router_place_id
   },
   methods: {
+    gotoMyTrip: function () {
+        this.$router.go(window.history.back())
+    },
     getDetail: function (response, status) {
       console.log(response, '<========= response')
       var vm = this
