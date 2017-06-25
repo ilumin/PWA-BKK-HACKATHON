@@ -27,22 +27,22 @@ npm run e2e
 npm test
 ```
 
-## Feature List
+## TODO List
 
-- ~~Login Page~~
-- ~~Home Page~~
-  - ~~Auto Complete Location Input~~
-  - ~~Create New Trip~~
-- ~~My Trip Page~~
-  - ~~User's Trip List~~
-- ~~Trip Detail Page~~
-  - ~~Trip's Routing Map~~
-  - ~~Trip's Location List~~
-- ~~Location Detail Page~~
-- Search And Add Waypoint Location Page (Future Plan)
+- [x] ~Login Page
+- [x] Home Page
+  - Auto Complete Location Input
+  - Create New Trip
+- [x] My Trip Page
+  - User's Trip List
+- [x] Trip Detail Page
+  - Trip's Routing Map
+  - Trip's Location List
+- [x] Location Detail Page
+- [ ] Search And Add Waypoint Location Page (Future Plan)
   - Search Location
   - Add New Waypoint Location
-- Trip Management Page (Future Plan)
+- [ ] Trip Management Page (Future Plan)
   - Trip's Routing Map With Waypoint
   - Edit Trip Detail
   - Remove And Re-ordering Location
