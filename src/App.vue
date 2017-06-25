@@ -34,4 +34,10 @@ body, html {
   height: 100%;
   min-height: 100%;
 }
+.card-title { color: #FFF; text-shadow: 0 0 .5em rgba(0,0,0,.8) }
+.page-header {
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
 </style>

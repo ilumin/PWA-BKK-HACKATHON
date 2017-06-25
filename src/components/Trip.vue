@@ -1,9 +1,7 @@
 <template>
   <div class="card trip" @click="redirectTo(trip['.key'])">
     <div class="trip-photos">
-      <div v-for="photo in tripPhotos" class="trip-photo">
-        <img :src="photo" />
-      </div>
+      <img v-if="tripPhoto" :src="tripPhoto" class="trip-photo" />
     </div>
     <div class="trip-info">
       <h4 class="card-title">
@@ -24,9 +22,11 @@
       }
     },
     computed: {
-      tripPhotos () {
+      tripPhoto () {
         return Object.keys(this.trip.locations)
-          .map(key => this.trip.locations[key].thumbnail)
+          .map(key => this.trip.locations[key])
+          .sort((a, b) => a.order > b.order)
+          .pop().thumbnail
       }
     }
   }
@@ -35,34 +35,24 @@
 <style>
   .trip {
     position: relative;
+    margin-bottom: 10px;
+    border: 0;
   }
   .trip-photos {
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
     width: 100%;
     z-index: 1;
+    overflow: hidden;
+    border-radius: 0.25rem;
   }
   .trip-photos .trip-photo {
     position: absolute;
     top: 0; bottom: 0;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-  }
-  .trip-photos .trip-photo img {
-    display: block;
-    width: auto;
-    height: 100%;
-  }
-  .trip-photos .trip-photo:first-child {
-    left: 0;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-  }
-  .trip-photos .trip-photo:last-child {
-    right: 0;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    background-color: rgba(0,0,0,.5)
   }
   .trip-info {
     position: relative;
