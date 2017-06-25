@@ -1,5 +1,6 @@
 <template>
-  <div>My Trips page
+  <div class="view my-trips">
+    <h3 class="page-header">My Trip</h3>
     <TripList :trips="trips"></TripList>
   </div>
 </template>
