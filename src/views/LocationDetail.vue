@@ -7,6 +7,7 @@
       <img :src=image_url></img>
     </div>
     <div>
+      <h2>Name: {{ place_id }}</h2>
       <h2>Name: {{ name }}</h2>
     </div>
     <div>
@@ -26,14 +27,14 @@ import StarRating from 'vue-star-rating'
 import { getPlaceDetail, getPlaceImage } from '../utils/ApiUtil'
 export default {
   name: 'locationDetail',
-  props: ['place_id'],
+  props: ['router_place_id'],
   components: [
     StarRating
   ],
+  
   watch: {
     place_id: function (placeId) {
       var vm = this
-      console.log('ppppp = ' + vm.place_id)
       getPlaceDetail(placeId).then(function (response) {
         vm.place_id = placeId
         vm.rating = response.data.result.rating
@@ -51,8 +52,12 @@ export default {
       address: '',
       type: '',
       rating: 0,
-      telephone: ''
+      telephone: '',
+      place_id: ''
     }
+  }, 
+  mounted () {
+    this.place_id = this.router_place_id
   }
 }
 </script>
