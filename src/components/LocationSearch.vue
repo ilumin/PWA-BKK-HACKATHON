@@ -1,6 +1,9 @@
 <template lang="html">
-  <div class="components location-search">
-    <input type="text" ref="gmap-autocomplete" :placeholder="placeholder">
+  <div class="form-group components location-search">
+    <input type="text"
+      ref="gmap-autocomplete"
+      class="form-text form-control form-control-lg"
+      :placeholder="placeholder">
   </div>
 </template>
 
