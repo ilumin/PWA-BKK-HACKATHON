@@ -51,7 +51,7 @@ export default {
       locations[this.destination.id] = this.destination
 
       const trip_id = db.ref('/trips/' + getUser().uid).push({
-        name: this.startAt.name + ' - ' + this.destination.name,
+        name: this.destination.name,
         date: new Date().toLocaleString(),
         locations
       }).key
