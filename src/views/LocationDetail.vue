@@ -7,7 +7,7 @@
       <div>
         <img class="card-img" :src=image_url />
       </div>
-      <div class="card-block location-info">
+      <div class="card-block">
         <h3 class="card-title">
           Name: {{ name }}
         </h3>
@@ -74,10 +74,6 @@ export default {
 </script>
 
 <style scoped>
-  .card{
-    background-color: transparent;
-    border: none;
-  }
   .card-img{
     border-radius: calc(0.25rem - 1px);
     margin: 0 auto;
