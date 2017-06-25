@@ -1,10 +1,12 @@
 <template>
   <div>
     <div>
-      <h1>Location Detail page</h1>
+      <h1>Location Detail</h1>
     </div>
     <div class="card">
-      <img class="card-img" :src=image_url></img>
+      <div>
+        <img class="card-img" :src=image_url />
+      </div>
       <div class="card-block location-info">
         <h3 class="card-title">
           Name: {{ name }}
@@ -64,13 +66,21 @@ export default {
       vm.telephone = response.formatted_phone_number
       vm.name = response.name
       vm.image_url = response.photos[0].getUrl({
-        maxWidth: 640
+        maxWidth: 300
       })
     }
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+  .card{
+    background-color: transparent;
+    border: none;
+  }
+  .card-img{
+    border-radius: calc(0.25rem - 1px);
+    margin: 0 auto;
+    width: 100%;
+  }
 </style>
