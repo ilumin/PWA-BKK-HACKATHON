@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1>Location Detail</h1>
+      <h5>Location Detail</h5>
     </div>
     <div class="card">
       <!--<div>
