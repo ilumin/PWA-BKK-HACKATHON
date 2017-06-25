@@ -1,5 +1,5 @@
 <template>
-  <div class="card location">
+  <div class="card location" @click="gotoPlaceDetail(location.id)">
     <img :src="location.thumbnail" class="card-img">
     <div class="card-block location-info">
       <h3 class="card-title">
@@ -33,11 +33,8 @@ export default {
     }
   },
   methods: {
-    routeImage: function (place_id) {
-      console.log('routeImage')
-      var vm = this
-      console.log('place_id = ' + place_id)
-      vm.$router.push('/location-detail/' + place_id)
+    gotoPlaceDetail (place_id) {
+      this.$router.push('/location-detail/' + place_id)
     },
     getImage: function (photoReference, maxWidth, maxHeight) {
       return getPlaceImage(photoReference, maxWidth, maxHeight)
