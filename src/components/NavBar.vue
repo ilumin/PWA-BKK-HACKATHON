@@ -4,9 +4,9 @@
 
       <b-nav-toggle target="nav_collapse"></b-nav-toggle>
 
-      <b-navbar-brand href="#">
-        <img id="" src="/static/img/icons/TripPlanner.png">
-      </b-navbar-brand>
+      <!--<b-navbar-brand href="#">-->
+      <img id="" src="/static/img/icons/TripPlanner.png">
+      <!--</b-navbar-brand>-->
 
       <b-collapse is-nav id="nav_collapse">
 
@@ -46,7 +46,7 @@ export default {
     top: 0;
     z-index: 999;
   }
-  b-navbar-brand img {
+  #my-navbar img {
     height: 36px;
   }
   b-nav-item {
