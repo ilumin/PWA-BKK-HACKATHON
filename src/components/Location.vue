@@ -1,6 +1,9 @@
 <template>
-  <div class="card location" @click="gotoPlaceDetail(location.id)">
-    <img v-if="location.thumbnail" :src="location.thumbnail" class="card-img">
+  <div class="card location" >
+    <img v-if="location.thumbnail" :src="location.thumbnail" class="card-img" @click="gotoPlaceDetail(location.id)">
+    <div v-if="type == 'add'" class="icon-add" @click="addLocation(location.id, location)" id="add-btn" name="add-btn">
+        <icon name="add"></icon>
+    </div>
     <div class="card-block location-info">
       <h3 class="card-title">
         {{ location.locationName }}
@@ -11,6 +14,7 @@
         :star-size="15"
         :increment="0.5">
       </star-rating>
+
     </div>
   </div>
 </template>
@@ -25,7 +29,7 @@ export default {
     StarRating,
     Icon
   },
-  props: ['location'],
+  props: ['location', 'type'],
   data () {
     return {
       isAdd: false,
@@ -39,8 +43,10 @@ export default {
     getImage: function (photoReference, maxWidth, maxHeight) {
       return getPlaceImage(photoReference, maxWidth, maxHeight)
     },
-    addLocation: function (id) {
-      this.$emit('addId', this.id)
+    addLocation: function (location_id, location) {
+      console.log("Add location JAAAA", location_id)
+      console.log("Add location ", location)
+      this.$emit('addId', this.location_id)
     },
     deleteLocation: function (id) {
       this.$emit('deleteId', this.id)
@@ -74,6 +80,16 @@ export default {
 
 .location:hover {
   background-color: #f4f6f6;
+}
+
+.icon-add{
+  background-color: greenyellow;
+  cursor: pointer;
+  width: 30%;
+  float: right;
+  font-weight:bold;
+  position: absolute; right: 0;
+
 }
 
 .card { position: relative; margin-bottom: 10px; border: 0; box-shadow: 0 0 .5em rgba(0,0,0,.3); min-height: 190px; background-color: rgba(0,0,0,.5) }

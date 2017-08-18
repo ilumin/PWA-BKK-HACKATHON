@@ -54,7 +54,7 @@ export default {
       }
 
       this.startAt.order = 0
-      this.destination.order = 1
+      this.destination.order = 999
 
       let locations = {}
       locations[this.startAt.id] = this.startAt

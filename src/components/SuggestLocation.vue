@@ -3,6 +3,7 @@
         <div>
             <Location v-if="suggestLocationList.length > 0"
                       v-for="location in suggestLocationList"
+                      type="add"
                       :location="location"
                       :key="location.id">
             </Location>
