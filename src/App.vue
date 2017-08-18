@@ -15,6 +15,7 @@ export default {
 <style>
 body {
     background-image: linear-gradient(#8b9da9, #fff6e4);
+    background-attachment: fixed;
     /*box-shadow: inset 0 0 100px hsla(0,0%,0%,.3);*/
     min-height: 100%;
 }

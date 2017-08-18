@@ -21,7 +21,11 @@
           Go to My Trip
         </b-button>
 
-        <button class="btn-lg btn-block btn-info" @click="addLocation()">Add Location</button>
+        <b-button
+          class="btn-lg btn-block btn-info"
+          @click="addLocation()">
+          Add Location
+        </b-button>
 
       </div>
 
