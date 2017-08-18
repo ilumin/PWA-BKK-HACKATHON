@@ -17,6 +17,13 @@
         @click="gotoMyTrip()">
         Go to My Trip
       </b-button>
+
+      <button class="btn-lg btn-block btn-info">Add Location.</button>
+
+      <div class="location" >
+        <SuggestLocation :locations="locations"></SuggestLocation>
+      </div>
+
     </div>
   </div>
 </template>
@@ -26,6 +33,7 @@ import {getUser, db} from '@/utils/FirebaseApp'
 import Map from '@/components/Map'
 import MyButton from '@/components/MyButton'
 import LocationList from '@/components/LocationList'
+import SuggestLocation from '@/components/SuggestLocation'
 
 export default {
   name: 'TripDetail',
@@ -33,13 +41,15 @@ export default {
   components: {
     "GMap": Map,
     MyButton,
-    LocationList
+    LocationList,
+    SuggestLocation
   },
   data: () => ({
     trip: {},
     direction: [],
     locations: {},
-    loaded: false
+    loaded: false,
+    showAddLocation: false
   }),
   methods: {
     gotoMyTrip () {
@@ -55,6 +65,7 @@ export default {
           this.loaded = true
           this.direction = Object.keys(this.trip.locations)
             .map(key => this.trip.locations[key])
+
           this.locations = Object.keys(this.trip.locations)
             .map(key => {
               const item = this.trip.locations[key]
@@ -68,9 +79,11 @@ export default {
                 photoReference: item.thumbnail,
                 thumbnail: item.thumbnail,
                 maxWidth: 100,
-                maxHeight: 100
+                maxHeight: 100,
+                position: item.position
               }
             })
+          console.log(this.locations, '<======== TripDetail this.locations')
         }
       }
     }

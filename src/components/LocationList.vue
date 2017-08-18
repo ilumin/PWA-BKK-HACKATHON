@@ -12,6 +12,7 @@
 
 <script>
 import Location from '@/components/Location'
+import {nearbyPlace} from '@/utils/ApiUtil'
 export default {
   name: 'locationList',
   props: ['locations'],
@@ -20,7 +21,9 @@ export default {
   },
   computed: {
     waypoints () {
-      return this.locations.sort((a, b) => a.order > b.order)
+      let vm = this
+
+      return vm.locations.sort((a, b) => a.order > b.order)
     }
   },
   methods: {

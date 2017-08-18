@@ -28,3 +28,20 @@ export function searchPlace (q) {
   return axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${q}&key=AIzaSyBhmfYqx0u4NWnSavh7CM3o0JtTJE-PP7U`)
 }
 
+export function nearbyPlace (position, callback) {
+  var map = new google.maps.Map(document.getElementById('otherMap'), {
+    zoom: 17
+  });
+
+  var pyrmont = new google.maps.LatLng(position[1].position.lat,position[1].position.lng);
+
+  var request = {
+    location: pyrmont,
+    radius: '10000',
+    type: ['cafe']
+  };
+
+  var service = new google.maps.places.PlacesService(map)
+  service.nearbySearch(request, callback)
+}
+

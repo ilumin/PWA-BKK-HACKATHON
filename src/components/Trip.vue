@@ -23,10 +23,16 @@
     },
     computed: {
       tripPhoto () {
-        return Object.keys(this.trip.locations)
-          .map(key => this.trip.locations[key])
-          .sort((a, b) => a.order > b.order)
-          .pop().thumbnail
+        if(this.trip.locations){
+          return Object.keys(this.trip.locations)
+            .map(key => this.trip.locations[key])
+            .sort((a, b) => a.order > b.order)
+            .pop().thumbnail
+        }
+        else {
+          return null
+        }
+
       }
     }
   }
