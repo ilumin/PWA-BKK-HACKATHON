@@ -4,7 +4,7 @@
     <div>
       <h5>Location Detail</h5>
     </div>
-    <div class="card">
+    <div class="card my-card">
       <!--<div>
         <img class="card-img" :src=image_url />
       </div>-->
@@ -107,9 +107,12 @@ export default {
 
 <style scoped>
   .card {
-    background-color: #fff
+    background-color: #fff;
   }
 
+  .my-card {
+    margin-top: 48px;
+  }
   .card-img{
     border-radius: calc(0.25rem - 1px);
     margin: 0 auto;
