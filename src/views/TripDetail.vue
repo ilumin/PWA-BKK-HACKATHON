@@ -26,6 +26,7 @@
     </div>
     <div class="location" v-show="this.showAddLocation === true">
       <SuggestLocation :locations="locations"></SuggestLocation>
+      <button class="btn-lg btn-block btn-info" @click="addLocation()">Back to main</button>
     </div>
   </div>
 </template>
