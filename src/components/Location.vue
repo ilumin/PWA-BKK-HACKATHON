@@ -103,6 +103,7 @@ export default {
 </script>
 
 <style>
+.location {height: 200px;}
 .location-photo {
   float: left;
   padding: 5px;

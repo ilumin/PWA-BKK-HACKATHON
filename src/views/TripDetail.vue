@@ -90,6 +90,9 @@ export default {
                 position: item.position
               }
             })
+
+          this.locations.sort((a, b) => a.order < b.order)
+          this.direction.sort((a, b) => a.order < b.order)
           console.log(this.locations, '<======== TripDetail this.locations')
         }
       }
