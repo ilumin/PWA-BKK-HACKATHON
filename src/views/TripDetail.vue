@@ -1,5 +1,6 @@
 <template>
   <div class="view trip-detail">
+    <NavBar></NavBar>
     <div v-show="this.showAddLocation === false">
       <div class="map-content" >
         <template v-if="loaded">
@@ -33,6 +34,7 @@
 
 <script>
 import {getUser, db} from '@/utils/FirebaseApp'
+import NavBar from '@/components/NavBar.vue'
 import Map from '@/components/Map'
 import MyButton from '@/components/MyButton'
 import LocationList from '@/components/LocationList'
@@ -45,7 +47,8 @@ export default {
     "GMap": Map,
     MyButton,
     LocationList,
-    SuggestLocation
+    SuggestLocation,
+    NavBar
   },
   data: () => ({
     trip: {},

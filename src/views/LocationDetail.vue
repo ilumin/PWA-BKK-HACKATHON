@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NavBar></NavBar>
     <div>
       <h5>Location Detail</h5>
     </div>
@@ -19,7 +20,7 @@
           Rating: <span class="text-muted">{{ rating }}</span>
         </div>-->
         <div>
-          Telephone: <span class="text-muted">{{ adtelephonedress }}</span>
+          Telephone: <span class="text-muted">{{ telephone }}</span>
         </div>
 
         <small slot="footer" class="text-muted">
@@ -28,28 +29,31 @@
       </b-card>
     </div>
     <div id="otherMap"></div>
-  
+
     <b-button
       class="btn-lg btn-block btn-info"
       @click="gotoMyTrip()">
       Back
     </b-button>
   </div>
-  
+
 </template>
 
 <script>
 import StarRating from 'vue-star-rating'
 import Icon from 'vue-icon'
 import { getPlaceDetail, getPlaceImage } from '../utils/ApiUtil'
+import NavBar from '@/components/NavBar.vue'
+
 export default {
   name: 'locationDetail',
   props: ['router_place_id'],
   components: [
     StarRating,
-    Icon
+    Icon,
+    NavBar
   ],
-  
+
   watch: {
     place_id: function (placeId) {
       var vm = this
@@ -66,7 +70,7 @@ export default {
       telephone: '',
       place_id: ''
     }
-  }, 
+  },
   mounted () {
     this.place_id = this.router_place_id
   },

@@ -1,6 +1,8 @@
 <template>
   <div class="view login">
-    <h3 class="tripplanner-header">TripPlanner</h3>
+    <div class="tripplanner-header">
+      <img id="" src="/static/img/icons/TripPlanner.png">
+    </div>
     <div id="firebaseui-auth-container"></div>
   </div>
 </template>
@@ -31,12 +33,12 @@ export default {
 .login, .firebaseui-card-content,
 .firebaseui-container, #firebaseui-auth-container {
   text-align: center;
-  height: 100%;
+  height: 60%;
 }
 .firebaseui-container {
   background-color: transparent;
-  margin: 0 -15px;
-  width: 110%;
+  /*margin: 0 -15px;*/
+  width: 100%;
 }
 .firebaseui-idp-facebook {
   position: absolute !important;
@@ -46,11 +48,11 @@ export default {
   margin-top: -50px !important;
 }
 .tripplanner-header {
-  color: #fff;
-  position: absolute !important;
-  left: 60%;
-  top: 42%;
-  margin-left: -110px !important;
-  margin-top: -50px !important;
+  width: 100%;
+  padding-top: 30%;
 }
+.tripplanner-header img {
+  height: 36px;
+}
+
 </style>

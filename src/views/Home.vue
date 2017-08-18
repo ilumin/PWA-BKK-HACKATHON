@@ -1,5 +1,6 @@
 <template>
   <div class="main-layout">
+    <NavBar></NavBar>
     <form class="form-box">
       <LocationSearch
         placeholder="Enter starting point"
@@ -28,6 +29,7 @@
 <script>
 import LocationSearch from '@/components/LocationSearch.vue'
 import AutoComplete from '@/utils/LocationAutoComplete.vue'
+import NavBar from '@/components/NavBar.vue'
 import {searchPlace} from '@/utils/ApiUtil'
 import {getUser, db} from '@/utils/FirebaseApp'
 
@@ -35,7 +37,8 @@ export default {
   name: 'home',
   components: {
     LocationSearch,
-    AutoComplete
+    AutoComplete,
+    NavBar
   },
   data () {
     return {

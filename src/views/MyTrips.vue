@@ -1,5 +1,6 @@
 <template>
   <div class="view my-trips">
+    <NavBar></NavBar>
     <h3 class="page-header">My Trip</h3>
     <TripList :trips="trips"></TripList>
     <b-button
@@ -13,11 +14,13 @@
 <script>
   import {getUser, db} from '@/utils/FirebaseApp'
   import TripList from '@/components/TripList'
+  import NavBar from '@/components/NavBar.vue'
 
   export default {
     name: 'myTrips',
     components: {
-      TripList
+      TripList,
+      NavBar
     },
     firebase: {
       trips: {
