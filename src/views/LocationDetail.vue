@@ -53,11 +53,11 @@ import NavBar from '@/components/NavBar.vue'
 export default {
   name: 'locationDetail',
   props: ['router_place_id'],
-  components: [
+  components: {
     StarRating,
     Icon,
     NavBar
-  ],
+  },
 
   watch: {
     place_id: function (placeId) {

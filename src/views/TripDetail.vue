@@ -1,6 +1,7 @@
 <template>
+  <div>
+    <nav-bar></nav-bar>
   <div class="view trip-detail">
-    <NavBar></NavBar>
     <div v-show="this.showAddLocation === false">
       <div class="map-content" >
         <template v-if="loaded">
@@ -20,7 +21,7 @@
           Go to My Trip
         </b-button>
 
-        <button class="btn-lg btn-block btn-info" @click="addLocation()">Add Location.</button>
+        <button class="btn-lg btn-block btn-info" @click="addLocation()">Add Location</button>
 
       </div>
 
@@ -29,6 +30,7 @@
       <SuggestLocation :locations="locations" :trip_id="trip_id"></SuggestLocation>
       <button class="btn-lg btn-block btn-info" @click="addLocation()">Back to main</button>
     </div>
+  </div>
   </div>
 </template>
 
@@ -111,7 +113,7 @@ export default {
   padding-bottom: 10px;
 }
 .map-content {
-  margin-top:5%;
+  margin-top: 60px;
   height: 80%;
   z-index: 2
 }

@@ -11,6 +11,7 @@
       <b-collapse is-nav id="nav_collapse">
 
         <b-nav is-nav-bar>
+          <b-nav-item href="#/">Home</b-nav-item>
           <b-nav-item href="#/my-trip">My Trip</b-nav-item>
           <b-nav-item @click="logOut()" href="#">Log Out</b-nav-item>
         </b-nav>
@@ -22,7 +23,7 @@
 
 <script>
 export default {
-  name: 'NavBar',
+  name: 'MyNavBar',
   methods: {
       logOut() {
         console.log("in logout")
