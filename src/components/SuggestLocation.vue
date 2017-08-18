@@ -26,10 +26,7 @@
     }),
     watch: {
       locations: function (locations) {
-        console.log(locations, "<====== SSSuggest locations")
-
         nearbyPlace(locations, this.getNearbyLocation)
-        return null
       }
     },
     methods: {
@@ -61,7 +58,6 @@
             }
 
           })
-        console.log(this.suggestLocationList, '<===== this.suggestLocationList')
       }
     }
     /*
