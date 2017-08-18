@@ -26,7 +26,7 @@
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
   </head>
   <body>
-    <div id="app">This is your fallback content in case JavaScript fails to load.</div>
+    <div id="app">Loading...</div>
 
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <script>
