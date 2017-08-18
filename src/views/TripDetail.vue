@@ -1,29 +1,31 @@
 <template>
   <div class="view trip-detail">
-    <div class="map-content">
-      <template v-if="loaded">
-        <GMap :direction="direction"></GMap>
-      </template>
-    </div>
-    <div class="map-content-space">
-    </div>
-    <div class="trip-content">
-      <h3 class="page-header">{{ trip.name }}</h3>
-      <template v-if="loaded">
-        <LocationList :locations="locations"></LocationList>
-      </template>
-      <b-button
-        class="btn-lg btn-block btn-info"
-        @click="gotoMyTrip()">
-        Go to My Trip
-      </b-button>
+    <div v-show="this.showAddLocation === false">
+      <div class="map-content" >
+        <template v-if="loaded">
+          <GMap :direction="direction"></GMap>
+        </template>
+      </div>
+      <div class="map-content-space">
+      </div>
+      <div class="trip-content">
+        <h3 class="page-header">{{ trip.name }}</h3>
+        <template v-if="loaded">
+          <LocationList :locations="locations"></LocationList>
+        </template>
+        <b-button
+          class="btn-lg btn-block btn-info"
+          @click="gotoMyTrip()">
+          Go to My Trip
+        </b-button>
 
-      <button class="btn-lg btn-block btn-info">Add Location.</button>
+        <button class="btn-lg btn-block btn-info" @click="addLocation()">Add Location.</button>
 
-      <div class="location" >
-        <SuggestLocation :locations="locations"></SuggestLocation>
       </div>
 
+    </div>
+    <div class="location" v-show="this.showAddLocation === true">
+      <SuggestLocation :locations="locations"></SuggestLocation>
     </div>
   </div>
 </template>
@@ -54,6 +56,10 @@ export default {
   methods: {
     gotoMyTrip () {
       this.$router.push('/my-trip')
+    },
+    addLocation () {
+      console.log(this.showAddLocation, 'this.showAddLocation')
+      this.showAddLocation = !this.showAddLocation
     }
   },
   firebase () {
