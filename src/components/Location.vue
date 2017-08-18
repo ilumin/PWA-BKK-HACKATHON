@@ -86,7 +86,7 @@ export default {
           order: count,
           rating: response.rating ? response.rating: 0,
           thumbnail: response.photos[0].getUrl({
-            maxWidth: 300
+            maxWidth: 800
           }),
           position: {
             lat: response.geometry.location.lat(),

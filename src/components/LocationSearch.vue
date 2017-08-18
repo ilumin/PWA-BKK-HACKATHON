@@ -25,7 +25,7 @@ export default {
     autocomplete.setComponentRestrictions({'country': ['th']});
 
     autocomplete.addListener('place_changed', () => {
-      const thumbSize = {maxWidth: 200, maxHeight: 200}
+      const thumbSize = {maxWidth: 800, maxHeight: 800}
       const place = autocomplete.getPlace()
 
       this.$emit('update:location', {

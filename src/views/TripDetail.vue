@@ -88,8 +88,8 @@ export default {
                 type: 'simple',
                 photoReference: item.thumbnail,
                 thumbnail: item.thumbnail,
-                maxWidth: 100,
-                maxHeight: 100,
+                maxWidth: 800,
+                maxHeight: 800,
                 position: item.position
               }
             })

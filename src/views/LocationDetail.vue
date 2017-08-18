@@ -13,16 +13,21 @@
         class="mb-2"
         show-footer
       >
-        <div>
-          Address: <span class="text-muted">{{ address }}</span>
+        <div class="card-body">
+          <div>
+            <small>
+              Address: <span class="text-muted">{{ address }}</span>
+            </small>
+          </div>
+          <!--<div>
+            Rating: <span class="text-muted">{{ rating }}</span>
+          </div>-->
+          <div>
+            <small>
+              Telephone: <span class="text-muted">{{ telephone }}</span>
+            </small>
+          </div>
         </div>
-        <!--<div>
-          Rating: <span class="text-muted">{{ rating }}</span>
-        </div>-->
-        <div>
-          Telephone: <span class="text-muted">{{ telephone }}</span>
-        </div>
-
         <small slot="footer" class="text-muted">
           Rating: {{ rating }}
         </small>
@@ -87,7 +92,7 @@ export default {
       vm.telephone = response.formatted_phone_number
       vm.name = response.name
       vm.image_url = response.photos[0].getUrl({
-        maxWidth: 300
+        maxWidth: 800
       })
     }
   }
@@ -95,6 +100,10 @@ export default {
 </script>
 
 <style scoped>
+  .card {
+    background-color: #fff
+  }
+
   .card-img{
     border-radius: calc(0.25rem - 1px);
     margin: 0 auto;
