@@ -27,10 +27,16 @@
     }),
     watch: {
       locations: function (locations) {
-        nearbyPlace(locations, this.getNearbyLocation)
+        this.loadNearby(locations)
       }
     },
     methods: {
+      loadNearby: function(locations){
+        if(!locations){
+          return
+        }
+        nearbyPlace(locations, this.getNearbyLocation)
+      },
       getNearbyLocation: function (results, status) {
         console.log(results, '<===== result')
 
@@ -60,6 +66,9 @@
 
           })
       }
+    },
+    mounted () {
+      this.loadNearby(this.locations)
     }
     /*
     * id: place.place_id,

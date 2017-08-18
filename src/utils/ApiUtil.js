@@ -29,6 +29,11 @@ export function searchPlace (q) {
 }
 
 export function nearbyPlace (position, callback) {
+
+  if(!position || !position[1]){
+    return
+  }
+
   var map = new google.maps.Map(document.getElementById('otherMap'), {
     zoom: 17
   });
