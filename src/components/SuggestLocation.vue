@@ -50,7 +50,7 @@
               let photo = null
               if(item.photos){
                 photo= item.photos[0].getUrl({
-                  maxWidth: 100
+                  maxWidth: 800
                 })
               }
 
@@ -60,8 +60,8 @@
                 rating: item.rating,
                 type: 'simple',
                 thumbnail: photo,
-                maxWidth: 100,
-                maxHeight: 100
+                maxWidth: 800,
+                maxHeight: 800
               }
             }
 
