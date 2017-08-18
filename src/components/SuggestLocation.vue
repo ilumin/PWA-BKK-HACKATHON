@@ -4,6 +4,7 @@
             <Location v-if="suggestLocationList.length > 0"
                       v-for="location in suggestLocationList"
                       type="add"
+                      :trip_id="trip_id"
                       :location="location"
                       :key="location.id">
             </Location>
@@ -19,7 +20,7 @@
     components: {
       Location
     },
-    props: ['locations'],
+    props: ['locations','trip_id'],
     name: 'SuggestLocation',
     data: () => ({
         propsLocation: null,
@@ -54,7 +55,7 @@
               }
 
               return {
-                id: item.id,
+                id: item.place_id,
                 locationName: String(item.name),
                 rating: item.rating,
                 type: 'simple',

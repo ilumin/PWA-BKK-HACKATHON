@@ -11,6 +11,7 @@ export function autoComplete (value) {
 }
 
 export function getPlaceDetail (placeId, callback) {
+  console.log(placeId, '<===== placeId')
   // return Vue.jsonp(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyBhmfYqx0u4NWnSavh7CM3o0JtTJE-PP7U`)
   // return axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=AIzaSyBhmfYqx0u4NWnSavh7CM3o0JtTJE-PP7U`)
   var map = new google.maps.Map(document.getElementById('otherMap'), {

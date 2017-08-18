@@ -1,7 +1,7 @@
 <template>
   <div class="card location" >
     <img v-if="location.thumbnail" :src="location.thumbnail" class="card-img" @click="gotoPlaceDetail(location.id)">
-    <div v-if="type == 'add'" class="icon-add" @click="addLocation(location.id, location)" id="add-btn" name="add-btn">
+    <div v-if="type == 'add'" class="icon-add" @click="addLocationToTrip(trip_id, location.id)" id="add-btn" name="add-btn">
         <icon name="add"></icon>
     </div>
     <div class="card-block location-info">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { getPlaceImage } from '../utils/ApiUtil'
+import { getPlaceImage, getPlaceDetail } from '../utils/ApiUtil'
 import StarRating from 'vue-star-rating'
 import Icon from 'vue-icon'
 
@@ -29,7 +29,7 @@ export default {
     StarRating,
     Icon
   },
-  props: ['location', 'type'],
+  props: ['location', 'type', 'trip_id'],
   data () {
     return {
       isAdd: false,
@@ -43,13 +43,48 @@ export default {
     getImage: function (photoReference, maxWidth, maxHeight) {
       return getPlaceImage(photoReference, maxWidth, maxHeight)
     },
-    addLocation: function (location_id, location) {
-      console.log("Add location JAAAA", location_id)
-      console.log("Add location ", location)
-      this.$emit('addId', this.location_id)
-    },
     deleteLocation: function (id) {
       this.$emit('deleteId', this.id)
+    },
+    addId: function (locationId) {
+      this.addLocationToTrip('-KnPoQLob13rmyEg7m_a', locationId)
+      // this.addLocationToTrip(tripId, locationId)
+    },
+    addLocationToTrip: function (tripId, locationId) {
+      // TODO get user uid
+      // TODO get location by ID
+      var _tripId = tripId
+
+      console.log(locationId, '<====== locationId')
+      getPlaceDetail(locationId, this.saveDetail)
+    },
+    saveDetail: function (response, status) {
+        console.log(response, '<===== response')
+//      .then(location => {
+//        // TODO add this locationId to trip [FIREBASE]
+//        var result = location
+//        const uid = getUser().uid
+//
+//        console.log('location:', location)
+//
+//        // var tripObj = db.ref('/trips/' + uid + '/' + _tripId + '/locations/')
+//        var tripObj = vm.trip
+//        console.log('tripObj = ' + tripObj)
+//
+//        var tripArr = Object.keys(tripArr).map(key => tripObj[key])
+//        console.log('tripArr = ' + tripArr)
+//        var ref = db.ref('/trips/' + uid + '/' + _tripId + '/locations/' + locationId).set({
+//          name: result.name,
+//          order: 0,
+//          rating: result.rating,
+//          thumbnail: result.photos[0].photo_reference,
+//          lat: result.geometry.location.lat,
+//          lng: result.geometry.location.lng
+//        }, this).then(function () {
+//          console.log('donee')
+//        }, this)
+//        console.log(ref)
+//      })
     }
   }
 }
