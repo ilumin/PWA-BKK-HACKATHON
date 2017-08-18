@@ -103,7 +103,6 @@ export default {
 </script>
 
 <style>
-.location {height: 200px;}
 .location-photo {
   float: left;
   padding: 5px;
@@ -143,5 +142,13 @@ export default {
 .card { position: relative; margin-bottom: 10px; border: 0; box-shadow: 0 0 .5em rgba(0,0,0,.3); min-height: 190px; background-color: rgba(0,0,0,.5) }
 .rating-text { display: none; }
 .card-img { width: 100%; height: auto; display: block }
-.location-info { position: absolute; left: 0; bottom: 0; right: 0; padding: 10px; }
+.location-info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  background: #333;
+  opacity: 0.7;
+}
 </style>

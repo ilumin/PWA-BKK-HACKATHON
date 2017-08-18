@@ -108,8 +108,7 @@ export default {
   padding-bottom: 10px;
 }
 .map-content {
-  position: absolute;
-  top: 0; left: 0; right: 0;
+  margin-top:5%;
   height: 80%;
   z-index: 2
 }
