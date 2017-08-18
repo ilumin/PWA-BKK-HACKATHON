@@ -74,19 +74,16 @@ export default {
 
         var vm = this
 
-        var tripObj = db.ref('/trips/' + uid + '/' + vm.tripId + '/locations')
+        var tripObj = db.ref('/trips/' + uid + '/' + vm.tripId)
 
-        console.log(tripObj, '<==== tripObj.locations')
+        var count = 0
+        tripObj.child('locations').on('value', function (snapshot) {
+          count = snapshot.numChildren()
+        })
 
-        console.log(Object.keys(tripObj).length, '<======= tripObj length')
-
-        var tripArr = Object.keys(tripObj).map(key => tripObj[key])
-
-        console.log(tripArr, '<===== tripArr')
-
-        var ref = db.ref('/trips/' + uid + '/' + vm.tripId + '/locations/' + response.place_id).set({
+        db.ref('/trips/' + uid + '/' + vm.tripId + '/locations/' + response.place_id).set({
           name: response.name,
-          order: tripArr.length,
+          order: count,
           rating: response.rating ? response.rating: 0,
           thumbnail: response.photos[0].getUrl({
             maxWidth: 300
@@ -98,6 +95,8 @@ export default {
         }).then(function () {
           console.log('donee')
         })
+
+        window.location.reload()
     }
   }
 }
