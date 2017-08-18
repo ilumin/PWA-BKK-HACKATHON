@@ -29,7 +29,13 @@
           </div>
         </div>
         <small slot="footer" class="text-muted">
-          Rating: {{ rating }}
+          Rating:
+          <star-rating
+                  :rating="rating"
+                  :read-only="true"
+                  :star-size="15"
+                  :increment="0.5">
+          </star-rating>
         </small>
       </b-card>
     </div>
