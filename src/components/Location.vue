@@ -23,8 +23,14 @@
 import { getPlaceImage, getPlaceDetail } from '../utils/ApiUtil'
 import StarRating from 'vue-star-rating'
 import Icon from 'vue-icon'
+import {getUser, db} from '@/utils/FirebaseApp'
 
 export default {
+  firebase: () => ({
+    trip: {
+      source: db.ref('trips/' + getUser().uid)
+    }
+  }),
   components: {
     StarRating,
     Icon
@@ -33,7 +39,8 @@ export default {
   data () {
     return {
       isAdd: false,
-      isDelete: false
+      isDelete: false,
+      tripId: null
     }
   },
   methods: {
@@ -53,38 +60,44 @@ export default {
     addLocationToTrip: function (tripId, locationId) {
       // TODO get user uid
       // TODO get location by ID
-      var _tripId = tripId
+       this.tripId = tripId
 
       console.log(locationId, '<====== locationId')
       getPlaceDetail(locationId, this.saveDetail)
     },
     saveDetail: function (response, status) {
         console.log(response, '<===== response')
-//      .then(location => {
-//        // TODO add this locationId to trip [FIREBASE]
-//        var result = location
-//        const uid = getUser().uid
-//
-//        console.log('location:', location)
-//
-//        // var tripObj = db.ref('/trips/' + uid + '/' + _tripId + '/locations/')
-//        var tripObj = vm.trip
-//        console.log('tripObj = ' + tripObj)
-//
-//        var tripArr = Object.keys(tripArr).map(key => tripObj[key])
-//        console.log('tripArr = ' + tripArr)
-//        var ref = db.ref('/trips/' + uid + '/' + _tripId + '/locations/' + locationId).set({
-//          name: result.name,
-//          order: 0,
-//          rating: result.rating,
-//          thumbnail: result.photos[0].photo_reference,
-//          lat: result.geometry.location.lat,
-//          lng: result.geometry.location.lng
-//        }, this).then(function () {
-//          console.log('donee')
-//        }, this)
-//        console.log(ref)
-//      })
+        // TODO add this locationId to trip [FIREBASE]
+        const uid = getUser().uid
+
+        console.log('location:', location)
+
+        var vm = this
+
+        var tripObj = db.ref('/trips/' + uid + '/' + vm.tripId + '/locations')
+
+        console.log(tripObj, '<==== tripObj.locations')
+
+        console.log(Object.keys(tripObj).length, '<======= tripObj length')
+
+        var tripArr = Object.keys(tripObj).map(key => tripObj[key])
+
+        console.log(tripArr, '<===== tripArr')
+
+        var ref = db.ref('/trips/' + uid + '/' + vm.tripId + '/locations/' + response.place_id).set({
+          name: response.name,
+          order: tripArr.length,
+          rating: response.rating ? response.rating: 0,
+          thumbnail: response.photos[0].getUrl({
+            maxWidth: 300
+          }),
+          position: {
+            lat: response.geometry.location.lat(),
+            lng: response.geometry.location.lng()
+          }
+        }).then(function () {
+          console.log('donee')
+        })
     }
   }
 }
