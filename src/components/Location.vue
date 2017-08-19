@@ -4,7 +4,6 @@
     <div v-if="type == 'add'" class="icon-add material-icons icon blue--text text--darken-2 icon--large" @click="addLocationToTrip(trip_id, location.id)" id="add-btn" name="add-btn">
         <icon class="style-icon-add material-icons icon blue--text text--darken-2 icon--large" name="add"></icon>
     </div>
-    {{location.order}}
     <div v-if="type == 'remove'" v-show="location.order != 0 && location.order != 999" class="icon-remove remove-btn" @click="removeLocation(trip_id, location.id)"  name="remove-btn">
       <icon name="delete"></icon>
     </div>
@@ -166,6 +165,24 @@ export default {
   z-index: 5;
 }
 
+.icon-remove{
+  margin-right: 1%;
+  margin-bottom: 1%;
+  cursor: pointer;
+  max-width: 30px;
+  min-width: 20px;
+  width: 10%;
+  float: right;
+  fill: white;
+  font-weight:bold;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+}
+.remove-btn{
+  z-index: 9999;
+}
 .card { position: relative; margin-bottom: 10px; border: 0; box-shadow: 0 0 .5em rgba(0,0,0,.3); min-height: 190px; background-color: rgba(0,0,0,.5) }
 .rating-text { display: none; }
 .card-img { width: 100%; height: auto; display: block }
