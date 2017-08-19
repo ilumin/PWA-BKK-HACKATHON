@@ -3,6 +3,9 @@
     <div class="trip-photos">
       <img v-if="tripPhoto" :src="tripPhoto" class="trip-photo" />
     </div>
+    <div v-if="type == 'remove'" class="icon-remove" @click="removeTrip(trip_id, location.id)" id="remove-btn" name="remove-btn">
+      <icon name="round_close_fill"></icon>
+    </div>
     <div class="trip-info">
       <h4 class="card-title">
         {{ trip.name }}
@@ -13,9 +16,14 @@
 </template>
 
 <script>
+  import Icon from 'vue-icon'
+
   export default {
     name: 'Trip',
-    props: ['trip'],
+    props: ['trip','type'],
+    components: {
+      Icon
+    },
     methods: {
       redirectTo: function (tripId) {
         this.$router.push(`/trips/${tripId}`)
@@ -75,5 +83,15 @@
     display: block;
     color: #EAEAEA;
     font-size: .7em
+  }
+  .icon-remove{
+    padding-right: 1%;
+    padding-top: 1%;
+    cursor: pointer;
+    width: 10%;
+    float: right;
+    font-weight:bold;
+    position: absolute; right: 0;
+    z-index: 3;
   }
 </style>
