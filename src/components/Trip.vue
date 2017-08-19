@@ -4,7 +4,7 @@
       <img v-if="tripPhoto" :src="tripPhoto" class="trip-photo" />
     </div>
     <div v-if="type == 'remove'" class="icon-remove" @click="removeTrip(trip_id, location.id)" id="remove-btn" name="remove-btn">
-      <icon name="round_close_fill"></icon>
+      <icon name="delete"></icon>
     </div>
     <div class="trip-info">
       <h4 class="card-title">
@@ -40,7 +40,6 @@
         else {
           return null
         }
-
       }
     }
   }
@@ -85,13 +84,18 @@
     font-size: .7em
   }
   .icon-remove{
-    padding-right: 1%;
-    padding-top: 1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
     cursor: pointer;
+    max-width: 30px;
+    min-width: 20px;
     width: 10%;
     float: right;
+    fill: white;
     font-weight:bold;
-    position: absolute; right: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
     z-index: 3;
   }
 </style>

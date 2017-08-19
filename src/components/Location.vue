@@ -1,8 +1,8 @@
 <template>
   <div class="card location" >
     <img v-if="location.thumbnail" :src="location.thumbnail" class="card-img" @click="gotoPlaceDetail(location.id)">
-    <div v-if="type == 'add'" class="icon-add" @click="addLocationToTrip(trip_id, location.id)" id="add-btn" name="add-btn">
-        <icon name="add"></icon>
+    <div v-if="type == 'add'" class="icon-add material-icons icon blue--text text--darken-2 icon--large" @click="addLocationToTrip(trip_id, location.id)" id="add-btn" name="add-btn">
+        <icon class="style-icon-add material-icons icon blue--text text--darken-2 icon--large" name="add"></icon>
     </div>
     <div class="card-block location-info">
       <h3 class="card-title">
@@ -130,13 +130,20 @@ export default {
 }
 
 .icon-add{
-  background-color: greenyellow;
+  background-color: #eee;
   cursor: pointer;
-  width: 30%;
+  width: 25%;
+  max-width: 150px;
   float: right;
   font-weight:bold;
-  position: absolute; right: 0;
-
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  fill: #00897b;
+  border-radius: 50%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  z-index: 5;
 }
 
 .card { position: relative; margin-bottom: 10px; border: 0; box-shadow: 0 0 .5em rgba(0,0,0,.3); min-height: 190px; background-color: rgba(0,0,0,.5) }
