@@ -44,7 +44,7 @@ export function nearbyPlace (position, callback) {
   var request = {
     location: pyrmont,
     radius: '30000',
-    types: ['cafe', 'real_estate_agency'],
+    types: ['cafe'],
     rankby: 'type'
   };
 
