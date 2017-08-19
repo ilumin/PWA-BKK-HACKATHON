@@ -13,7 +13,7 @@
         <div class="trip-content">
           <h3 class="page-header">{{ trip.name }}</h3>
           <template v-if="loaded">
-            <LocationList :locations="locations"></LocationList>
+            <LocationList :locations="locations" :trip_id="trip_id"></LocationList>
           </template>
           <b-button
             class="btn-lg btn-block btn-info"

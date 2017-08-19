@@ -6,6 +6,7 @@
       v-for="(location, index) in waypoints"
       :location="location"
       :key="location.id"
+      :trip_id="trip_id"
       type="remove"
     >
     </location>
@@ -17,7 +18,7 @@ import Location from '@/components/Location'
 import {nearbyPlace} from '@/utils/ApiUtil'
 export default {
   name: 'locationList',
-  props: ['locations'],
+  props: ['locations', 'trip_id'],
   components: {
     Location
   },
