@@ -1,12 +1,12 @@
 <template>
-  <div class="card trip" @click="redirectTo(trip['.key'])">
+  <div class="card trip">
     <div class="trip-photos">
       <img v-if="tripPhoto" :src="tripPhoto" class="trip-photo" />
     </div>
-    <div v-if="type == 'remove'" class="icon-remove" @click="removeTrip(trip_id, location.id)" id="remove-btn" name="remove-btn">
+    <div v-if="type == 'remove'" class="icon-remove remove-btn" @click="removeTrip(trip['.key'])"  name="remove-btn">
       <icon name="round_close_fill"></icon>
     </div>
-    <div class="trip-info">
+    <div class="trip-info" @click="redirectTo(trip['.key'])">
       <h4 class="card-title">
         {{ trip.name }}
         <small class="card-date">{{ trip.date }}</small>
@@ -17,6 +17,7 @@
 
 <script>
   import Icon from 'vue-icon'
+  import {getUser, db} from '@/utils/FirebaseApp'
 
   export default {
     name: 'Trip',
@@ -27,6 +28,21 @@
     methods: {
       redirectTo: function (tripId) {
         this.$router.push(`/trips/${tripId}`)
+      },
+      removeTrip: function (tripId) {
+        console.log(getUser().uid, '<===== getUser().uid')
+        console.log(tripId, '<===== tripId')
+
+        var r = confirm("Are you sure for delete ?")
+        if (r === true) {
+          db.ref('/trips/' + getUser().uid)
+            .child(tripId)
+            .remove()
+            .then(function () {
+              console.log('remove...')
+            }, this)
+        }
+
       }
     },
     computed: {
@@ -93,5 +109,8 @@
     font-weight:bold;
     position: absolute; right: 0;
     z-index: 3;
+  }
+  .remove-btn{
+    z-index: 9999;
   }
 </style>
