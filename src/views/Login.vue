@@ -39,6 +39,8 @@ export default {
   background-color: transparent;
   /*margin: 0 -15px;*/
   width: 100%;
+  height: 100%;
+  box-shadow: none;
 }
 .firebaseui-idp-facebook {
   position: absolute !important;

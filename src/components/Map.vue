@@ -8,7 +8,7 @@ import Vue from 'vue'
 
 export default {
   name: 'Map',
-  props: ['markers', 'direction'],
+  props: ['markers', 'direction', 'waypointOrder'],
   methods: {
     renderMap () {
       console.log('init map')
@@ -67,9 +67,11 @@ export default {
       let directionsDisplay = new google.maps.DirectionsRenderer()
       directionsDisplay.setMap(this.mapObject)
 
+      let vm = this
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
-          directionsDisplay.setDirections(response);
+          directionsDisplay.setDirections(response)
+          vm.$emit('waypointOrder', response.routes[0].waypoint_order)
         } else {
           console.error('Directions request failed due to ', status)
         }
