@@ -5,7 +5,7 @@
     <div v-show="this.showAddLocation === false">
       <div class="map-content" >
         <template v-if="loaded">
-          <GMap :direction="direction"></GMap>
+          <GMap :direction="direction" v-on:waypointOrder="handleWaypointOrder"></GMap>
         </template>
       </div>
       <div class="map-content-space">
@@ -24,7 +24,7 @@
         <b-button
           class="btn-lg btn-block btn-info"
           @click="addLocation()">
-          Add Location
+          Add Suggesting Location
         </b-button>
 
       </div>
@@ -70,6 +70,13 @@ export default {
     addLocation () {
       console.log(this.showAddLocation, 'this.showAddLocation')
       this.showAddLocation = !this.showAddLocation
+    },
+    handleWaypointOrder: function (wpOrder) {
+      let i = 1;
+      for(let wp of wpOrder) {
+        this.locations[wp+1].order = i++
+      }
+      this.locations.sort((a, b) => a.order > b.order)
     }
   },
   firebase () {

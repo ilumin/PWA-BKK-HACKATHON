@@ -20,7 +20,7 @@
         variant="secondary"
         class="btn-lg btn-block"
         @click="gotoMyTrip()">
-        MyTrip
+        My Trip
       </b-button>
     </form>
   </div>
@@ -81,7 +81,7 @@ export default {
 
 <style>
 .form-box {
-  padding: 50% 0;
+  padding-top: 30%;
   position: relative;
   z-index: 2;
 }
