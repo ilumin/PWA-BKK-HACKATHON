@@ -43,8 +43,9 @@ export function nearbyPlace (position, callback) {
 
   var request = {
     location: pyrmont,
-    radius: '10000',
-    type: ['cafe']
+    radius: '30000',
+    types: ['cafe', 'real_estate_agency'],
+    rankby: 'type'
   };
 
   var service = new google.maps.places.PlacesService(map)
