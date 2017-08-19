@@ -53,7 +53,7 @@ export default {
     },
     createTrip () {
       if (!this.startAt || !this.destination) {
-        return alert('Please enter starting point and destination')
+        return
       }
 
       this.startAt.order = 0
