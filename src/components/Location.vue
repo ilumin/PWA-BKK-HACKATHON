@@ -4,6 +4,10 @@
     <div v-if="type == 'add'" class="icon-add material-icons icon blue--text text--darken-2 icon--large" @click="addLocationToTrip(trip_id, location.id)" id="add-btn" name="add-btn">
         <icon class="style-icon-add material-icons icon blue--text text--darken-2 icon--large" name="add"></icon>
     </div>
+    {{location.order}}
+    <div v-if="type == 'remove'" v-show="location.order != 0 && location.order != 999" class="icon-remove remove-btn" @click="removeLocation(trip_id, location.id)"  name="remove-btn">
+      <icon name="delete"></icon>
+    </div>
     <div class="card-block location-info">
       <h3 class="card-title">
         {{ location.locationName }}
@@ -64,6 +68,22 @@ export default {
 
       console.log(locationId, '<====== locationId')
       getPlaceDetail(locationId, this.saveDetail)
+    },
+    removeLocation: function (tripId, locationId) {
+      console.log(getUser().uid, '<===== getUser().uid')
+      console.log(tripId, '<===== tripId')
+
+      var r = confirm("Are you sure for delete ?")
+      if (r === true) {
+        db.ref('/trips/' + getUser().uid + "/" + tripId + "locations")
+          .child(locationId)
+          .remove()
+          .then(function () {
+            console.log('remove...')
+            window.location.reload()
+          }, this)
+      }
+
     },
     saveDetail: function (response, status) {
         console.log(response, '<===== response')

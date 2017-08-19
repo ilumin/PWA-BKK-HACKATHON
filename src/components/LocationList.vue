@@ -3,9 +3,11 @@
     <location v-if="locations.length > 0"
       @addId="addId(location.id)"
       @deleteId="deleteId(location.id)"
-      v-for="location in waypoints"
+      v-for="(location, index) in waypoints"
       :location="location"
-      :key="location.id">
+      :key="location.id"
+      type="remove"
+    >
     </location>
   </div>
 </template>
