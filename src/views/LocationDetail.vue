@@ -43,7 +43,7 @@
 
     <b-button
       class="btn-lg btn-block btn-info"
-      @click="gotoMyTrip()">
+      @click="goBack()">
       Back
     </b-button>
   </div>
@@ -86,8 +86,8 @@ export default {
     this.place_id = this.router_place_id
   },
   methods: {
-    gotoMyTrip: function () {
-        this.$router.go(window.history.back())
+    goBack: function () {
+      window.history.back()
     },
     getDetail: function (response, status) {
       console.log(response, '<========= response')
