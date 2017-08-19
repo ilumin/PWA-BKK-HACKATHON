@@ -98,7 +98,7 @@ export default {
       vm.telephone = response.formatted_phone_number
       vm.name = response.name
       vm.image_url = response.photos[0].getUrl({
-        maxWidth: 800
+        maxWidth: 1000
       })
     }
   }
