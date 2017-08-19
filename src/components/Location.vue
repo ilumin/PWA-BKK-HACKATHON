@@ -69,12 +69,9 @@ export default {
       getPlaceDetail(locationId, this.saveDetail)
     },
     removeLocation: function (tripId, locationId) {
-      console.log(getUser().uid, '<===== getUser().uid')
-      console.log(tripId, '<===== tripId')
-
       var r = confirm("Are you sure for delete ?")
       if (r === true) {
-        db.ref('/trips/' + getUser().uid + "/" + tripId + "locations")
+        db.ref('/trips/' + getUser().uid + "/" + tripId + "/locations")
           .child(locationId)
           .remove()
           .then(function () {
