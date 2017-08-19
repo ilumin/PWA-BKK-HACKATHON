@@ -1,40 +1,42 @@
 <template>
-  <div>
+  <div class="trip-detail-style">
     <nav-bar></nav-bar>
-  <div class="view trip-detail">
-    <div v-show="this.showAddLocation === false">
-      <div class="map-content" >
-        <template v-if="loaded">
-          <GMap :direction="direction" v-on:waypointOrder="handleWaypointOrder"></GMap>
-        </template>
-      </div>
-      <div class="map-content-space">
-      </div>
-      <div class="trip-content">
-        <h3 class="page-header">{{ trip.name }}</h3>
-        <template v-if="loaded">
-          <LocationList :locations="locations"></LocationList>
-        </template>
-        <b-button
-          class="btn-lg btn-block btn-info"
-          @click="gotoMyTrip()">
-          Go to My Trip
-        </b-button>
+    <div class="view trip-detail">
+      <div v-show="this.showAddLocation === false">
+        <div class="map-content" >
+          <template v-if="loaded">
+            <GMap :direction="direction" v-on:waypointOrder="handleWaypointOrder"></GMap>
+          </template>
+        </div>
+        <div class="map-content-space">
+        </div>
+        <div class="trip-content">
+          <h3 class="page-header">{{ trip.name }}</h3>
+          <template v-if="loaded">
+            <LocationList :locations="locations"></LocationList>
+          </template>
+          <b-button
+            class="btn-lg btn-block btn-info"
+            @click="gotoMyTrip()">
+            Go to My Trip
+          </b-button>
 
+          <b-button
+            class="btn-lg btn-block btn-info"
+            @click="addLocation()">
+            Add Suggesting Location
+          </b-button>
+        </div>
+      </div>
+      <div class="location" v-show="this.showAddLocation === true">
+        <SuggestLocation :locations="locations" :trip_id="trip_id"></SuggestLocation>
         <b-button
           class="btn-lg btn-block btn-info"
           @click="addLocation()">
-          Add Suggesting Location
+          Back to main
         </b-button>
-
       </div>
-
     </div>
-    <div class="location" v-show="this.showAddLocation === true">
-      <SuggestLocation :locations="locations" :trip_id="trip_id"></SuggestLocation>
-      <button class="btn-lg btn-block btn-info" @click="addLocation()">Back to main</button>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -120,11 +122,14 @@ export default {
 .trip-detail {
   height: 100%;
 }
+.trip-detail-style {
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
 .trip-content {
   padding-bottom: 10px;
 }
 .map-content {
-  margin-top: 60px;
   height: 80%;
   z-index: 2
 }
