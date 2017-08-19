@@ -53,7 +53,7 @@ export default {
     },
     createTrip () {
       if (!this.startAt || !this.destination) {
-        return
+        return false
       }
 
       this.startAt.order = 0
